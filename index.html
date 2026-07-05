@@ -35,7 +35,7 @@
     </div>
     <div class="hero-media">
       <div class="hero-video">
-        <video src="video/video.mp4" title="Vídeo" autoplay loop playsinline controls preload="auto"></video>
+        <video src="video/video.mp4" title="Vídeo" loop playsinline controls preload="auto" id="heroVideo"></video>
       </div>
       <div class="hero-stars">
         <div class="stars">★★★★★</div>
@@ -229,6 +229,19 @@
   }, { threshold: .1 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ===== VIDEO PLAY ON SCROLL =====
+  const video = document.getElementById('heroVideo');
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.3 });
+  videoObserver.observe(video);
 
   // ===== FAQ ACCORDION =====
   document.querySelectorAll('.faq-question').forEach(btn => {

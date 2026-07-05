@@ -939,17 +939,23 @@ ul { list-style: none; }
   text-align: left;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 12px;
   transition: background .2s;
 }
 .faq-question:hover { background: #F6F9FF; }
+.faq-question .faq-icon {
+  width: 20px;
+  height: 20px;
+  color: #D4AF37;
+  flex-shrink: 0;
+}
 .faq-question .arrow {
   font-size: .8rem;
   transition: transform .3s;
   color: #D4AF37;
   flex-shrink: 0;
+  margin-left: auto;
 }
 .faq-item.active .faq-question .arrow { transform: rotate(180deg); }
 .faq-answer {

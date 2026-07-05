@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kit Bíblico Infantil</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -223,36 +224,36 @@
     <p class="faq-subtitle fade-in">Tire suas dúvidas antes de garantir seu acesso. Se ainda restar alguma pergunta, nosso suporte estará pronto para ajudar.</p>
     <div class="faq-list fade-in">
       <div class="faq-item active">
-        <button class="faq-question">📥 Como recebo o material? <span class="arrow">▼</span></button>
+        <button class="faq-question"><i data-lucide="download" class="faq-icon"></i> Como recebo o material? <span class="arrow">▼</span></button>
         <div class="faq-answer">Assim que o pagamento for aprovado, você recebe o acesso imediatamente por e-mail. É só baixar os arquivos e começar a utilizar.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">🚚 Preciso esperar entrega? <span class="arrow">▼</span></button>
-        <div class="faq-answer">N&atilde;o. O material &eacute; 100% digital. Voc&ecirc; recebe tudo online e pode come&ccedil;ar a usar em poucos minutos.</div>
+        <button class="faq-question"><i data-lucide="truck" class="faq-icon"></i> Preciso esperar entrega? <span class="arrow">▼</span></button>
+        <div class="faq-answer">Não. O material é 100% digital. Você recebe tudo online e pode começar a usar em poucos minutos.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">🔑 Como acesso? <span class="arrow">▼</span></button>
-        <div class="faq-answer">O acesso &eacute; enviado automaticamente para o seu e-mail ap&oacute;s a confirma&ccedil;&atilde;o do pagamento. Voc&ecirc; poder&aacute; baixar os arquivos sempre que precisar.</div>
+        <button class="faq-question"><i data-lucide="key-round" class="faq-icon"></i> Como acesso? <span class="arrow">▼</span></button>
+        <div class="faq-answer">O acesso é enviado automaticamente para o seu e-mail após a confirmação do pagamento. Você poderá baixar os arquivos sempre que precisar.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">🖨️ Posso imprimir quantas vezes quiser? <span class="arrow">▼</span></button>
-        <div class="faq-answer">Sim. Voc&ecirc; pode imprimir quantas vezes desejar para uso pessoal ou em suas aulas, sem nenhum custo adicional.</div>
+        <button class="faq-question"><i data-lucide="printer" class="faq-icon"></i> Posso imprimir quantas vezes quiser? <span class="arrow">▼</span></button>
+        <div class="faq-answer">Sim. Você pode imprimir quantas vezes desejar para uso pessoal ou em suas aulas, sem nenhum custo adicional.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">📱 Funciona no celular? <span class="arrow">▼</span></button>
-        <div class="faq-answer">Sim. Voc&ecirc; pode acessar o material pelo celular, tablet ou computador. Para imprimir, recomendamos utilizar um computador.</div>
+        <button class="faq-question"><i data-lucide="smartphone" class="faq-icon"></i> Funciona no celular? <span class="arrow">▼</span></button>
+        <div class="faq-answer">Sim. Você pode acessar o material pelo celular, tablet ou computador. Para imprimir, recomendamos utilizar um computador.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">👶 Para qual idade &eacute; indicado? <span class="arrow">▼</span></button>
-        <div class="faq-answer">O material foi desenvolvido principalmente para crian&ccedil;as entre 3 e 10 anos, podendo ser adaptado conforme a necessidade.</div>
+        <button class="faq-question"><i data-lucide="baby" class="faq-icon"></i> Para qual idade é indicado? <span class="arrow">▼</span></button>
+        <div class="faq-answer">O material foi desenvolvido principalmente para crianças entre 3 e 10 anos, podendo ser adaptado conforme a necessidade.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">💳 &Eacute; pagamento mensal? <span class="arrow">▼</span></button>
-        <div class="faq-answer">N&atilde;o. O pagamento &eacute; &uacute;nico. Ap&oacute;s a compra, o material ser&aacute; seu para sempre.</div>
+        <button class="faq-question"><i data-lucide="credit-card" class="faq-icon"></i> É pagamento mensal? <span class="arrow">▼</span></button>
+        <div class="faq-answer">Não. O pagamento é único. Após a compra, o material será seu para sempre.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-question">🛡️ Tem garantia? <span class="arrow">▼</span></button>
-        <div class="faq-answer">Sim. Voc&ecirc; possui 7 dias de garantia incondicional. Se n&atilde;o gostar do material, devolvemos 100% do seu dinheiro.</div>
+        <button class="faq-question"><i data-lucide="shield-check" class="faq-icon"></i> Tem garantia? <span class="arrow">▼</span></button>
+        <div class="faq-answer">Sim. Você possui 7 dias de garantia incondicional. Se não gostar do material, devolvemos 100% do seu dinheiro.</div>
       </div>
     </div>
   </div>
@@ -302,6 +303,9 @@
       if (!isActive) item.classList.add('active');
     });
   });
+
+  // ===== LUCIE ICONS =====
+  lucide.createIcons();
 </script>
 </body>
 </html>

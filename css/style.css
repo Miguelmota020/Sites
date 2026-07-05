@@ -505,14 +505,18 @@ ul { list-style: none; }
   border-radius: 20px;
   padding: 28px 20px;
   text-align: center;
-  box-shadow: 0 2px 12px rgba(0,0,0,.04);
+  box-shadow:
+    0 4px 16px rgba(10,47,143,.06),
+    0 8px 24px rgba(0,0,0,.04);
   border: 1px solid rgba(10,47,143,.04);
   transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
 }
 .recebe-card:hover {
-  transform: scale(1.025);
-  box-shadow: 0 12px 32px rgba(10,47,143,.1);
-  border-color: rgba(10,47,143,.15);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 12px 40px rgba(10,47,143,.12),
+    0 20px 60px rgba(0,0,0,.08);
+  border-color: rgba(10,47,143,.12);
 }
 .recebe-card .thumb {
   width: 100%;

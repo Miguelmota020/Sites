@@ -780,6 +780,16 @@ ul { list-style: none; }
   bottom: -60px;
   left: -60px;
 }
+.depo-star {
+  position: absolute;
+  color: #D4AF37;
+  opacity: .08;
+  pointer-events: none;
+  font-size: 1.5rem;
+}
+.depo-star--1 { top: 12%; left: 5%; font-size: 2rem; }
+.depo-star--2 { top: 45%; right: 3%; font-size: 1.8rem; }
+.depo-star--3 { bottom: 15%; left: 8%; font-size: 1.2rem; }
 .depoimentos-title {
   font-size: 2rem;
   font-weight: 800;
@@ -839,7 +849,13 @@ ul { list-style: none; }
   font-weight: 700;
   font-size: 1.05rem;
   color: #0A2F8F;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
+}
+.depo-card .depo-label {
+  font-size: .78rem;
+  color: #94a3b8;
+  font-weight: 400;
+  margin-bottom: 3px;
 }
 .depo-card .stars {
   color: #D4AF37;

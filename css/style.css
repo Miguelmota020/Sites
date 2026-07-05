@@ -555,13 +555,13 @@ ul { list-style: none; }
   max-width: 580px;
   margin: 0 auto;
   background: #fff;
-  border-radius: 24px;
-  padding: 56px 48px 48px;
+  border-radius: 28px;
+  padding: 60px 52px 52px;
   text-align: center;
   box-shadow:
-    0 4px 24px rgba(0,0,0,.06),
-    0 1px 0 0 rgba(10,47,143,.08);
-  border: 1px solid rgba(10,47,143,.1);
+    0 2px 20px rgba(0,0,0,.04),
+    0 8px 40px rgba(0,0,0,.06);
+  border: 1px solid rgba(10,47,143,.06);
   position: relative;
 }
 .oferta-badge {
@@ -584,83 +584,91 @@ ul { list-style: none; }
   font-size: 1.15rem;
   font-weight: 700;
   color: #0A2F8F;
-  line-height: 1.5;
-  margin-bottom: .75rem;
-  max-width: 420px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.oferta-sub {
-  font-size: .9rem;
-  color: #64748b;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   max-width: 440px;
   margin-left: auto;
   margin-right: auto;
 }
 .oferta-price-old {
-  font-size: 1.35rem;
-  color: #94a3b8;
+  font-size: 1.5rem;
+  color: #7A7A7A;
   text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  margin-bottom: .15rem;
+}
+.oferta-price-label-top {
+  font-size: .8rem;
+  font-weight: 700;
+  color: #D4AF37;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   margin-bottom: .2rem;
 }
 .oferta-price-current {
-  font-size: 4.5rem;
+  font-size: 5rem;
   font-weight: 900;
   color: #D4AF37;
   line-height: 1;
-  margin: .2rem 0;
-  letter-spacing: -2px;
-  text-shadow: 0 2px 12px rgba(212,175,55,.15);
+  margin: .3rem 0;
+  letter-spacing: -3px;
+  text-shadow: 0 4px 20px rgba(212,175,55,.2);
 }
 .oferta-price-label {
   font-size: .95rem;
   color: #64748b;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   font-weight: 500;
 }
 .oferta-benefits {
   text-align: left;
-  max-width: 350px;
-  margin: 0 auto 2rem;
+  max-width: 360px;
+  margin: 0 auto 1.5rem;
   list-style: none;
 }
 .oferta-benefits li {
-  margin-bottom: .7rem;
+  margin-bottom: .85rem;
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: .95rem;
+  font-size: 1rem;
   color: #1E293B;
 }
 .oferta-benefits li .star {
-  font-size: .85rem;
+  font-size: .9rem;
   color: #D4AF37;
   flex-shrink: 0;
   filter: drop-shadow(0 0 4px rgba(212,175,55,.5));
+}
+.oferta-urgency {
+  font-size: .82rem;
+  color: #EF4444;
+  font-weight: 600;
+  margin-bottom: .75rem;
+  text-align: center;
 }
 .oferta-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 62px;
-  padding: 0 52px;
+  height: 70px;
+  padding: 0 56px;
   width: 100%;
-  max-width: 400px;
-  background: linear-gradient(135deg, #F4C542, #D4AF37);
+  max-width: 420px;
+  background: linear-gradient(135deg, #F4C542, #D4AF37, #F4C542);
+  background-size: 200% 200%;
   color: #0A2F8F;
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 16px;
+  border-radius: 18px;
   cursor: pointer;
   letter-spacing: .5px;
   text-transform: uppercase;
   transition: transform .3s, box-shadow .3s;
   box-shadow:
-    0 4px 0 0 #B8962E,
-    0 8px 24px rgba(212,175,55,.4);
+    0 5px 0 0 #B8962E,
+    0 10px 30px rgba(212,175,55,.5);
   position: relative;
   overflow: hidden;
 }
@@ -668,7 +676,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 16px;
+  border-radius: 18px;
   background: linear-gradient(180deg, rgba(255,255,255,.35) 0%, transparent 50%);
   pointer-events: none;
 }
@@ -676,13 +684,13 @@ ul { list-style: none; }
   transform: translateY(-3px);
   box-shadow:
     0 2px 0 0 #B8962E,
-    0 12px 35px rgba(212,175,55,.5);
+    0 16px 40px rgba(212,175,55,.55);
 }
 .oferta-secure {
   margin-top: 1.25rem;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 .oferta-secure span {
@@ -694,18 +702,19 @@ ul { list-style: none; }
 }
 
 @media (max-width: 600px) {
-  .oferta-card { padding: 44px 24px 36px; }
+  .oferta-card { padding: 48px 24px 40px; }
   .oferta-headline { font-size: 1.05rem; }
-  .oferta-sub { font-size: .85rem; }
-  .oferta-price-current { font-size: 3.25rem; }
-  .oferta-btn { height: 54px; font-size: .95rem; padding: 0 32px; }
-  .oferta-secure { gap: 12px; flex-direction: column; align-items: center; }
+  .oferta-price-old { font-size: 1.25rem; }
+  .oferta-price-current { font-size: 3.5rem; }
+  .oferta-btn { height: 62px; font-size: 1rem; padding: 0 32px; }
+  .oferta-secure { gap: 14px; flex-direction: column; align-items: center; }
   .oferta-secure span { font-size: .78rem; }
 }
 @media (max-width: 480px) {
-  .oferta-card { padding: 40px 20px 32px; }
-  .oferta-price-current { font-size: 2.75rem; }
-  .oferta-benefits li { font-size: .85rem; }
+  .oferta-card { padding: 44px 20px 36px; }
+  .oferta-price-current { font-size: 3rem; }
+  .oferta-benefits li { font-size: .9rem; }
+  .oferta-urgency { font-size: .75rem; }
 }
 
 /* ===== DEPOIMENTOS ===== */

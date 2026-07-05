@@ -218,14 +218,6 @@ ul { list-style: none; }
   .hero-btn { width: 100%; justify-content: center; }
   .hero-secure { justify-content: center; }
 }
-@media (max-width: 480px) {
-  .hero-content h1 { font-size: 1.75rem; }
-  .hero-benefits { grid-template-columns: 1fr; max-width: 280px; }
-  .hero { padding: 40px 0; }
-  .hero-media { width: 100%; }
-  .hero-video { border-radius: 12px; }
-}
-
 /* ===== DORES ===== */
 .dores { padding: 80px 0; background: #fff; }
 .dores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
@@ -450,4 +442,42 @@ ul { list-style: none; }
 .footer-copy { width: 100%; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #1e293b; font-size: .8rem; }
 @media (max-width: 600px) {
   .footer .container { flex-direction: column; text-align: center; }
+}
+
+/* ===== MOBILE GERAL ===== */
+@media (max-width: 480px) {
+  section { padding: 50px 0 !important; }
+  .container { padding: 0 16px; }
+  .btn, .hero-btn { height: 52px; padding: 0 24px; font-size: .95rem; border-radius: 14px; }
+  .btn-lg { height: 56px; padding: 0 32px; font-size: 1.05rem; }
+  .hero { padding: 40px 0 !important; }
+  .hero .container { gap: 32px; }
+  .hero-content h1 { font-size: 1.75rem; }
+  .hero-benefits { grid-template-columns: 1fr; max-width: 280px; }
+  .hero-media { width: 100%; }
+  .hero-video { border-radius: 12px; }
+  .dores-grid { grid-template-columns: 1fr; }
+  .solucao .container { gap: 30px; }
+  .solucao-list li { font-size: .95rem; }
+  .recebe-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .recebe-card { padding: 16px 12px; }
+  .recebe-card h3 { font-size: .85rem; }
+  .recebe-card p { font-size: .75rem; }
+  .oferta-card { padding: 32px 16px; }
+  .oferta-card .price-current { font-size: 2.5rem; }
+  .depo-grid { grid-template-columns: 1fr; }
+  .depo-card { padding: 20px 16px; }
+  .faq-question { padding: 14px 16px; font-size: .9rem; }
+  .faq-answer { padding: 0 16px; font-size: .85rem; }
+  .faq-item.active .faq-answer { padding: 0 16px 14px; }
+  .footer { padding: 30px 0 20px; }
+}
+
+@media (max-width: 360px) {
+  .hero-content h1 { font-size: 1.4rem; }
+  .recebe-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .recebe-card { padding: 12px 8px; }
+  .recebe-card h3 { font-size: .75rem; }
+  .btn, .hero-btn { font-size: .8rem; height: 46px; padding: 0 16px; }
+  .oferta-card .price-current { font-size: 2rem; }
 }

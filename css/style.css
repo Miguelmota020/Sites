@@ -684,7 +684,7 @@ ul { list-style: none; }
 /* ===== MOBILE GERAL ===== */
 @media (max-width: 480px) {
   section { padding: 50px 0 !important; }
-  .container { padding: 0 16px; }
+  .container { padding: 0 24px; }
   .btn, .hero-btn { height: 52px; padding: 0 24px; font-size: .95rem; border-radius: 14px; }
   .btn-lg { height: 56px; padding: 0 32px; font-size: 1.05rem; }
   .hero { padding: 40px 0 !important; }

@@ -35,7 +35,7 @@
     </div>
     <div class="hero-media">
       <div class="hero-video">
-        <video src="video/video.mp4" title="Vídeo" playsinline controls preload="auto"></video>
+        <video src="video/video.mp4" title="Vídeo" playsinline controls preload="auto" id="heroVideo"></video>
       </div>
       <div class="hero-stars">
         <div class="stars">★★★★★</div>
@@ -229,6 +229,11 @@
   }, { threshold: .1 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ===== VIDEO PLAY ON CLICK =====
+  document.getElementById('heroVideo').addEventListener('click', function () {
+    if (this.paused) { this.play(); }
+  });
 
   // ===== FAQ ACCORDION =====
   document.querySelectorAll('.faq-question').forEach(btn => {

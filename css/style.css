@@ -94,6 +94,7 @@ ul { list-style: none; }
   letter-spacing: -.02em;
 }
 .hero-content h1 .highlight {
+  color: #D4AF37;
   background: linear-gradient(135deg, #D4AF37, #F4C542);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -241,6 +242,7 @@ ul { list-style: none; }
   color: rgba(255,255,255,.8);
 }
 .hero-stars .stars {
+  color: #D4AF37;
   background: linear-gradient(135deg, #D4AF37, #F4C542);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -413,6 +415,7 @@ ul { list-style: none; }
   letter-spacing: -.02em;
 }
 .solucao-title .highlight {
+  color: #D4AF37;
   background: linear-gradient(135deg, #D4AF37, #F4C542);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

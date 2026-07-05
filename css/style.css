@@ -830,26 +830,16 @@ ul { list-style: none; }
   width: 56px;
   height: 56px;
   border-radius: 50%;
+  background: #0A2F8F;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   font-weight: 700;
   font-size: 1.15rem;
+  overflow: hidden;
   flex-shrink: 0;
 }
-.depo-card .avatar--ac { background: linear-gradient(135deg, #0A2F8F, #1A4DBD); }
-.depo-card .avatar--ac::before { content: "AC"; }
-.depo-card .avatar--rl { background: linear-gradient(135deg, #D4AF37, #F4C542); color: #0A2F8F; }
-.depo-card .avatar--rl::before { content: "RL"; }
-.depo-card .avatar--jm { background: linear-gradient(135deg, #1A4DBD, #3A6FD8); }
-.depo-card .avatar--jm::before { content: "JM"; }
-.depo-card .avatar--mp { background: linear-gradient(135deg, #0A2F8F, #D4AF37); }
-.depo-card .avatar--mp::before { content: "MP"; }
-.depo-card .avatar--cr { background: linear-gradient(135deg, #D4AF37, #C8A227); color: #0A2F8F; }
-.depo-card .avatar--cr::before { content: "CR"; }
-.depo-card .avatar--fs { background: linear-gradient(135deg, #1A4DBD, #0A2F8F); }
-.depo-card .avatar--fs::before { content: "FS"; }
 .depo-card .avatar img {
   width: 100%;
   height: 100%;

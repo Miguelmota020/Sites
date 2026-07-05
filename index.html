@@ -35,7 +35,7 @@
     </div>
     <div class="hero-media">
       <div class="hero-video">
-        <video src="video/video.mp4" title="Vídeo" playsinline controls preload="none" id="heroVideo"></video>
+        <video src="video/video.mp4" title="Vídeo" playsinline controls preload="metadata" id="heroVideo"></video>
       </div>
       <div class="hero-stars">
         <div class="stars">★★★★★</div>
@@ -231,7 +231,9 @@
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
   // ===== VIDEO PLAY ON CLICK =====
-  document.getElementById('heroVideo').addEventListener('click', function () {
+  const heroVideo = document.getElementById('heroVideo');
+  heroVideo.pause();
+  heroVideo.addEventListener('click', function () {
     if (this.paused) { this.play(); }
   });
 

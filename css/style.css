@@ -189,6 +189,7 @@ ul { list-style: none; }
   height: 100%;
   border: none;
   object-fit: cover;
+  display: block;
 }
 .hero-stars {
   margin-top: 1.25rem;
@@ -218,6 +219,8 @@ ul { list-style: none; }
   .hero-content h1 { font-size: 1.75rem; }
   .hero-benefits { grid-template-columns: 1fr; max-width: 280px; }
   .hero { padding: 40px 0; }
+  .hero-media { width: 100%; }
+  .hero-video { border-radius: 12px; }
 }
 
 /* ===== DORES ===== */

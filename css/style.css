@@ -177,7 +177,8 @@ ul { list-style: none; }
 }
 .hero-video {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  position: relative;
+  padding-bottom: 56.25%;
   background: #0f172a;
   border-radius: 20px;
   box-shadow: 0 25px 50px -12px rgba(0,0,0,.35);
@@ -185,11 +186,13 @@ ul { list-style: none; }
 }
 .hero-video iframe,
 .hero-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
   object-fit: cover;
-  display: block;
 }
 .hero-stars {
   margin-top: 1.25rem;

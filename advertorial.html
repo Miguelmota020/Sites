@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como ensinar a Bíblia para crianças de forma divertida (método comprovado)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #1e293b;
+      background: #f8fafc;
+      line-height: 1.8;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .advertorial-label {
+      text-align: center;
+      font-size: .7rem;
+      color: #94a3b8;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 0;
+      border-bottom: 1px solid #e2e8f0;
+      background: #fff;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .article-header {
+      padding: 60px 0 40px;
+      text-align: center;
+      background: linear-gradient(135deg, #0A2F8F, #1A4DBD);
+      color: #fff;
+    }
+    .article-header .category {
+      display: inline-block;
+      background: #D4AF37;
+      color: #0A2F8F;
+      font-weight: 700;
+      font-size: .7rem;
+      letter-spacing: 1px;
+      padding: 6px 18px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .article-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+    .article-header p {
+      font-size: 1rem;
+      color: rgba(255,255,255,.75);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .article-meta {
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+      margin-top: 20px;
+    }
+
+    .article-body {
+      background: #fff;
+      padding: 50px 0 60px;
+    }
+    .article-body .container {
+      max-width: 680px;
+    }
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0A2F8F;
+      margin: 40px 0 16px;
+      line-height: 1.3;
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body p {
+      font-size: 1rem;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+    .article-body p .highlight {
+      color: #D4AF37;
+      font-weight: 700;
+    }
+    .article-body .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #0A2F8F;
+      text-align: center;
+      padding: 30px 0;
+      margin: 36px 0;
+      border-top: 2px solid #D4AF37;
+      border-bottom: 2px solid #D4AF37;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .article-body ul {
+      margin: 20px 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+    .article-body ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 1rem;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+    .article-body ul li .star {
+      color: #D4AF37;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0A2F8F, #1A4DBD);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      margin: 48px 0 0;
+      color: #fff;
+    }
+    .cta-box h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .cta-box p {
+      font-size: 1rem;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+      padding: 0 48px;
+      background: linear-gradient(160deg, #C8A227, #D4AF37 25%, #F4C542 50%, #D4AF37 75%, #C8A227);
+      color: #0A2F8F;
+      font-weight: 800;
+      font-size: 1rem;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      transition: transform .3s, box-shadow .3s;
+      box-shadow: 0 4px 0 0 #B8962E, 0 8px 24px rgba(212,175,55,.45);
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 0 0 #B8962E, 0 12px 35px rgba(212,175,55,.55);
+    }
+    .cta-secure {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .cta-secure span {
+      font-size: .78rem;
+      color: rgba(255,255,255,.5);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .article-footer {
+      background: #f8fafc;
+      padding: 24px 0;
+      text-align: center;
+      font-size: .78rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 600px) {
+      .article-header { padding: 40px 0 30px; }
+      .article-header h1 { font-size: 1.6rem; }
+      .article-body h2 { font-size: 1.25rem; }
+      .article-body .pull-quote { font-size: 1.1rem; padding: 20px 0; }
+      .cta-box { padding: 36px 24px; }
+      .cta-box h3 { font-size: 1.2rem; }
+      .cta-btn { width: 100%; height: 56px; font-size: .9rem; padding: 0 24px; }
+      .cta-secure { flex-direction: column; align-items: center; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="advertorial-label">&#9679; ADVERTORIAL &#9679;</div>
+
+<header class="article-header">
+  <div class="container">
+    <div class="category">Educação Cristã</div>
+    <h1>Como ensinar a Bíblia para crianças de forma divertida (sem gastar horas preparando atividades)</h1>
+    <p>Um método simples que está ajudando milhares de pais a ensinar a Palavra de Deus enquanto seus filhos se divertem longe das telas.</p>
+    <div class="article-meta">Por Redação · 5 min de leitura</div>
+  </div>
+</header>
+
+<article class="article-body">
+  <div class="container">
+
+    <p>Se você é pai ou mãe cristão, provavelmente já sentiu o desejo de ensinar a Bíblia ao seu filho de um jeito que ele realmente <strong>entenda, se interesse e se divirta</strong>.</p>
+
+    <p>O problema é que, entre o trabalho, os afazeres de casa e a correria do dia a dia, sobra pouco tempo para preparar atividades criativas. E quando sobra, muitas vezes falta aquele material certo que prenda a atenção das crianças.</p>
+
+    <p>Se isso parece familiar, você não está sozinho. Uma pesquisa recente mostrou que <strong>mais de 70% dos pais cristãos</strong> têm dificuldade em encontrar materiais de qualidade para ensinar histórias bíblicas aos filhos em casa.</p>
+
+    <div class="pull-quote">"Ensine a criança no caminho em que deve andar, e ainda quando for velho não se desviará dele." — Provérbios 22:6</div>
+
+    <h2>O desafio de ensinar a Palavra de Deus hoje</h2>
+
+    <p>Vivemos em uma era de distrações. Celulares, tablets, televisão — tudo compete pela atenção dos nossos filhos. E, convenhamos, ensinar a Bíblia com apenas uma história falada dificilmente consegue competir com um desenho animado colorido.</p>
+
+    <p>Foi pensando nisso que um grupo de educadores cristãos desenvolveu o <strong>Kit Bíblico Infantil</strong>: um material completo com mais de 400 atividades prontas para imprimir que transformam o aprendizado da Bíblia em um momento divertido e inesquecível.</p>
+
+    <h2>O que faz esse material ser diferente?</h2>
+
+    <p>Diferente dos materiais comuns que você encontra soltos pela internet, o Kit Bíblico Infantil foi pensado para <strong>ensinar enquanto a criança brinca</strong>. Cada atividade foi desenhada para estimular o aprendizado sem que ela perceba que está estudando.</p>
+
+    <p>O material inclui:</p>
+
+    <ul>
+      <li><span class="star">&#9733;</span> <strong>Histórias bíblicas ilustradas</strong> que prendem a atenção das crianças</li>
+      <li><span class="star">&#9733;</span> <strong>Jogos e desafios educativos</strong> que tornam o aprendizado divertido</li>
+      <li><span class="star">&#9733;</span> <strong>Atividades de alfabetização e coordenação motora</strong> com temas bíblicos</li>
+      <li><span class="star">&#9733;</span> <strong>Desenhos para colorir</strong> de histórias como Arca de Noé, Davi e Golias e muitas outras</li>
+      <li><span class="star">&#9733;</span> <strong>Caça-palavras e labirintos</strong> que desenvolvem a concentração</li>
+    </ul>
+
+    <h2>Por que pais de todo o Brasil estão usando?</h2>
+
+    <p>O sucesso do material está na sua praticidade. Você não precisa gastar horas preparando nada. <strong>É só imprimir e começar a usar</strong>. As atividades são organizadas por tema e idade, facilitando a escolha do que fazer a cada dia.</p>
+
+    <p>Além disso, o kit foi desenvolvido para crianças de <strong>3 a 10 anos</strong>, o que significa que serve tanto para os pequenos que estão começando a conhecer as histórias quanto para os maiores que já estão aprendendo a ler.</p>
+
+    <p>E o melhor: enquanto seu filho aprende sobre Deus, ele também desenvolve a leitura, a coordenação motora, a concentração e valores cristãos que levará para a vida toda.</p>
+
+    <div class="pull-quote">"Meu filho de 5 anos amou! Agora ele mesmo pede para fazer as atividades todos os dias." — Ana Carvalho, mãe do Pedro</div>
+
+    <h2>Quanto custa e como ter acesso?</h2>
+
+    <p>O Kit Bíblico Infantil completo — com todas as 400+ atividades, bônus exclusivos e acesso vitalício — está disponível por um valor promocional especial.</p>
+
+    <p>Por menos do que você gastaria em um lanche fora, você terá um material que poderá usar <strong>durante meses e até anos</strong> com seu filho, criando momentos de aprendizado e conexão em família.</p>
+
+    <p>Para garantir o acesso imediato ao material completo, é só clicar no botão abaixo. O pagamento é único e seguro, e você ainda conta com <strong>7 dias de garantia incondicional</strong> — se não gostar, devolvemos 100% do seu dinheiro.</p>
+
+    <div class="cta-box">
+      <h3>Quer ter acesso ao material completo?</h3>
+      <p>Mais de 400 atividades bíblicas prontas para imprimir. Acesso imediato. Garantia de 7 dias.</p>
+      <a href="index.html" class="cta-btn">QUERO ACESSO IMEDIATO</a>
+      <div class="cta-secure">
+        <span>🔒 Pagamento 100% seguro</span>
+        <span>⚡ Acesso imediato</span>
+        <span>🛡️ Garantia de 7 dias</span>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+<footer class="article-footer">
+  <div class="container">
+    <p>Este é um conteúdo informativo. O Kit Bíblico Infantil é a ferramenta recomendada.</p>
+    <p style="margin-top:4px;">&copy; 2026 Kit Bíblico Infantil. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+</body>
+</html>

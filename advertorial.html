@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>O dia em que percebi que meu filho sabia mais sobre desenhos do que sobre a Bíblia</title>
+  <title>O dia em que percebi que meu filho sabia mais sobre desenhos do que sobre a Bíblia — FamíliaCristã</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -15,19 +15,51 @@
       color: #1F2937;
       background: #FFFFFF;
       line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; height: auto; }
 
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* ===== PROGRESS BAR ===== */
+    #reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #22C55E, #16A34A);
+      z-index: 9999;
+      transition: width .15s ease;
+      box-shadow: 0 1px 6px rgba(34,197,94,.3);
     }
 
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== LAYOUT GRID (sidebar on desktop) ===== */
+    .page-layout {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 48px;
+    }
+    .page-layout .main-content { min-width: 0; }
+    .page-layout .sidebar { padding-top: 48px; }
+
+    @media (max-width: 1024px) {
+      .page-layout { grid-template-columns: 1fr; }
+      .page-layout .sidebar { display: none; }
+    }
+
+    /* ===== SITE HEADER ===== */
     .site-header {
       background: #1E3A8A;
       border-bottom: 3px solid #FACC15;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     .site-header .container {
       display: flex;
@@ -44,19 +76,27 @@
       letter-spacing: -.5px;
     }
     .site-logo span { color: #FACC15; }
-    .site-menu {
-      display: flex;
-      gap: 28px;
-      font-size: .85rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.8);
+    .site-menu { display: flex; gap: 28px; font-size: .85rem; font-weight: 500; color: rgba(255,255,255,.8); }
+    .site-menu a { position: relative; }
+    .site-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #FACC15;
+      transition: width .3s ease;
     }
-    .site-menu a:hover { color: #FACC15; }
+    .site-menu a:hover { color: #fff; }
+    .site-menu a:hover::after { width: 100%; }
+    .site-menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
+    /* ===== CATEGORY BAR ===== */
     .category-bar {
-      background: #F8FAFC;
+      background: #F7F8FC;
       border-bottom: 1px solid #E5E7EB;
-      padding: 10px 0;
+      padding: 12px 0;
     }
     .category-bar .container {
       display: flex;
@@ -74,14 +114,13 @@
       font-weight: 600;
       font-size: .65rem;
       letter-spacing: 1px;
-      padding: 4px 14px;
+      padding: 5px 14px;
       border-radius: 4px;
       text-transform: uppercase;
     }
 
-    .article-header {
-      padding: 48px 0 32px;
-    }
+    /* ===== ARTICLE HEADER ===== */
+    .article-header { padding: 56px 0 36px; }
     .article-header .category-label {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
@@ -89,322 +128,623 @@
       letter-spacing: 1.5px;
       color: #1E3A8A;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       display: inline-block;
       border-left: 3px solid #FACC15;
-      padding-left: 12px;
+      padding-left: 14px;
     }
     .article-header h1 {
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 2.2rem;
-      line-height: 1.25;
-      letter-spacing: -.02em;
+      font-size: 2.6rem;
+      line-height: 1.2;
+      letter-spacing: -.03em;
       color: #1F2937;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .article-header .subtitle {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: #6B7280;
-      line-height: 1.6;
-      margin-bottom: 24px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 640px;
     }
     .article-meta {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       font-size: .85rem;
       color: #6B7280;
-      padding-bottom: 24px;
+      padding-bottom: 28px;
       border-bottom: 1px solid #E5E7EB;
     }
-    .article-meta .author {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .article-meta .author { display: flex; align-items: center; gap: 12px; }
     .article-meta .author-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #1E3A8A;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: .8rem;
-      color: #fff;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #1E3A8A; display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .85rem; color: #fff;
     }
     .article-meta .author-info { display: flex; flex-direction: column; }
     .article-meta .author-name { font-weight: 600; color: #1F2937; }
     .article-meta .author-role { font-size: .78rem; color: #9CA3AF; }
+    .article-meta .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .article-meta .meta-item svg { width: 14px; height: 14px; color: #9CA3AF; }
     .article-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: #D1D5DB; }
+    .article-share { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: .82rem; color: #6B7280; cursor: pointer; }
+    .article-share:hover { color: #1E3A8A; }
 
-    .featured-image {
-      margin-bottom: 36px;
-    }
-    .featured-image img {
-      width: 100%;
-      border-radius: 8px;
-    }
+    /* ===== FEATURED IMAGE ===== */
+    .featured-image { margin-bottom: 44px; position: relative; }
+    .featured-image img { width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
     .featured-image .caption {
-      font-size: .8rem;
-      color: #6B7280;
-      padding: 10px 0 0;
-      border-bottom: 1px solid #E5E7EB;
-      padding-bottom: 14px;
+      font-size: .8rem; color: #6B7280; padding: 12px 0 0;
+      border-bottom: 1px solid #E5E7EB; padding-bottom: 16px; margin-top: 4px;
     }
 
-    .article-body { padding-bottom: 48px; }
+    /* ===== SUMMARY BOX ===== */
+    .summary-box {
+      background: #F7F8FC;
+      border: 1px solid #E5E7EB;
+      border-radius: 14px;
+      padding: 36px 32px;
+      margin-bottom: 48px;
+    }
+    .summary-box .label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      color: #1E3A8A;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+    .summary-box .items { display: flex; flex-direction: column; gap: 12px; }
+    .summary-box .items .item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .95rem;
+      color: #1F2937;
+      animation: fadeUp .5s ease forwards;
+      opacity: 0;
+    }
+    .summary-box .items .item:nth-child(1) { animation-delay: .1s; }
+    .summary-box .items .item:nth-child(2) { animation-delay: .2s; }
+    .summary-box .items .item:nth-child(3) { animation-delay: .3s; }
+    .summary-box .items .item:nth-child(4) { animation-delay: .4s; }
+    .summary-box .items .item:nth-child(5) { animation-delay: .5s; }
+    .summary-box .items .item .icon {
+      width: 22px; height: 22px; border-radius: 50%; background: #22C55E; display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .summary-box .items .item .icon svg { width: 12px; height: 12px; color: #fff; }
+
+    /* ===== ARTICLE BODY ===== */
+    .article-body { padding-bottom: 56px; }
     .article-body p {
       font-size: 1.05rem;
       color: #1F2937;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
+      line-height: 1.85;
     }
-    .article-body p strong { color: #1E3A8A; }
-    .article-body a { color: #1E3A8A; font-weight: 600; }
-    .article-body a:hover { text-decoration: underline; }
+    .article-body p strong { color: #1E3A8A; font-weight: 600; }
+    .article-body a { color: #1E3A8A; font-weight: 500; border-bottom: 1px solid transparent; transition: border-color .2s; }
+    .article-body a:hover { border-color: #1E3A8A; }
+    .article-body p em { color: #6B7280; }
 
-    .article-body hr {
-      border: none;
-      border-top: 1px solid #E5E7EB;
-      margin: 36px 0;
+    .article-body h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #1F2937;
+      margin: 52px 0 18px;
+      line-height: 1.3;
+      letter-spacing: -.01em;
     }
 
-    .article-body .quote {
-      background: #F8FAFC;
+    .article-body .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 48px 0;
+    }
+    .article-body .divider span {
+      width: 40px; height: 2px; background: #E5E7EB; border-radius: 2px;
+    }
+    .article-body .divider .diamond {
+      width: 6px; height: 6px; background: #1E3A8A; transform: rotate(45deg); border-radius: 1px;
+    }
+
+    /* ===== HIGHLIGHT BOX (aprendemos) ===== */
+    .article-body .learn-box {
+      background: #F7F8FC;
+      border: 1px solid #E5E7EB;
+      border-radius: 14px;
+      padding: 32px 28px;
+      margin: 40px 0;
+    }
+    .article-body .learn-box .learn-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .7rem;
+      letter-spacing: 2px;
+      color: #1E3A8A;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .article-body .learn-box .learn-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .95rem;
+      color: #1F2937;
+      padding: 6px 0;
+    }
+    .article-body .learn-box .learn-item .check {
+      color: #22C55E;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== QUOTE BOX ===== */
+    .article-body .quote-block {
+      background: #F7F8FC;
       border-left: 4px solid #1E3A8A;
-      border-radius: 0 8px 8px 0;
-      padding: 24px 28px;
-      margin: 32px 0;
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+      margin: 40px 0;
+      position: relative;
     }
-    .article-body .quote p {
+    .article-body .quote-block .quote-icon {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-size: 3rem;
+      line-height: 1;
+      color: #1E3A8A;
+      opacity: .1;
+      font-family: Georgia, serif;
+      pointer-events: none;
+    }
+    .article-body .quote-block p {
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
       font-size: 1.1rem;
       color: #1E3A8A;
-      line-height: 1.6;
-      margin-bottom: 0;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
     }
-
-    .article-body .highlight-box {
-      background: #F8FAFC;
-      border-left: 4px solid #FACC15;
-      border-radius: 0 8px 8px 0;
-      padding: 24px 28px;
-      margin: 32px 0;
-    }
-    .article-body .highlight-box p {
-      margin-bottom: 0;
-      font-size: .95rem;
-      color: #374151;
-    }
-
-    .cta-inline {
-      background: #F8FAFC;
-      border: 1px solid #E5E7EB;
-      border-radius: 10px;
-      padding: 28px 32px;
-      text-align: center;
-      margin: 36px 0;
-    }
-    .cta-inline p {
-      font-size: .95rem;
+    .article-body .quote-block .author {
+      font-size: .85rem;
       color: #6B7280;
-      margin-bottom: 16px;
+      font-weight: 400;
     }
-    .cta-inline a {
-      display: inline-block;
-      padding: 12px 32px;
+
+    /* ===== INLINE IMAGE ===== */
+    .article-body .inline-media { margin: 44px 0; }
+    .article-body .inline-media img { width: 100%; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,.05); }
+    .article-body .inline-media .caption { font-size: .8rem; color: #6B7280; padding-top: 10px; }
+
+    /* ===== LIST ===== */
+    .article-body ul { margin: 24px 0 32px; padding: 0; list-style: none; }
+    .article-body ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 1rem;
+      color: #1F2937;
+      margin-bottom: 10px;
+      padding-left: 0;
+    }
+    .article-body ul li::before {
+      content: "✓";
+      color: #22C55E;
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: 1.05rem;
+    }
+
+    /* ===== CHECKLIST SECTION ===== */
+    .checklist-section {
+      background: #F7F8FC;
+      border: 1px solid #E5E7EB;
+      border-radius: 14px;
+      padding: 36px 32px;
+      margin: 44px 0;
+    }
+    .checklist-section h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #1F2937;
+      margin-bottom: 20px;
+    }
+    .checklist-section .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      font-size: .95rem;
+      color: #1F2937;
+    }
+    .checklist-section .check-item .box {
+      width: 20px; height: 20px;
+      border: 2px solid #22C55E;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
       background: #22C55E;
-      color: #fff;
+    }
+    .checklist-section .check-item .box svg { width: 12px; height: 12px; color: #fff; }
+
+    /* ===== CTA INLINE ===== */
+    .btn-inline {
+      background: #F7F8FC;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 32px 28px;
+      text-align: center;
+      margin: 40px 0;
+      transition: box-shadow .3s;
+    }
+    .btn-inline:hover { box-shadow: 0 4px 16px rgba(0,0,0,.04); }
+    .btn-inline p { font-size: .95rem; color: #6B7280; margin-bottom: 18px; }
+    .btn-inline a {
+      display: inline-block;
+      padding: 10px 28px;
+      background: transparent;
+      color: #1E3A8A;
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
-      font-size: .85rem;
+      font-size: .82rem;
       border-radius: 8px;
       letter-spacing: .3px;
       text-transform: uppercase;
-      transition: background .2s, transform .2s;
+      border: 1px solid #1E3A8A;
+      transition: background .2s, color .2s;
     }
-    .cta-inline a:hover {
-      background: #16A34A;
-      transform: translateY(-1px);
-      text-decoration: none;
-    }
+    .btn-inline a:hover { background: #1E3A8A; color: #fff; }
 
+    /* ===== CTA FINAL ===== */
     .cta-final {
-      background: #F8FAFC;
+      background: #F7F8FC;
       border: 1px solid #E5E7EB;
-      border-radius: 12px;
-      padding: 44px 36px;
+      border-radius: 16px;
+      padding: 48px 40px;
       text-align: center;
-      margin-top: 44px;
+      margin-top: 48px;
+      transition: box-shadow .3s;
     }
+    .cta-final:hover { box-shadow: 0 8px 30px rgba(0,0,0,.05); }
     .cta-final h3 {
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 1.4rem;
-      color: #1E3A8A;
+      font-size: 1.5rem;
+      color: #1F2937;
       line-height: 1.3;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
-    .cta-final p {
-      font-size: .95rem;
-      color: #6B7280;
-      margin-bottom: 22px;
-    }
+    .cta-final p { font-size: 1rem; color: #6B7280; margin-bottom: 24px; max-width: 440px; margin-left: auto; margin-right: auto; }
     .cta-final .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 56px;
-      padding: 0 44px;
+      height: 60px;
+      padding: 0 48px;
       background: #22C55E;
       color: #fff;
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: .95rem;
+      font-size: 1rem;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      letter-spacing: .5px;
+      letter-spacing: .4px;
       text-transform: uppercase;
-      transition: background .2s, transform .2s, box-shadow .2s;
-      box-shadow: 0 4px 14px rgba(34,197,94,.3);
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+      box-shadow: 0 4px 16px rgba(34,197,94,.35);
     }
     .cta-final .btn:hover {
       background: #16A34A;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(34,197,94,.4);
-      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(34,197,94,.45);
     }
-    .cta-final .secure {
-      margin-top: 14px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .cta-final .secure span {
-      font-size: .78rem;
-      color: #9CA3AF;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+    .cta-final .secure { margin-top: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .cta-final .secure span { font-size: .8rem; color: #9CA3AF; display: flex; align-items: center; gap: 6px; }
 
-    .next-part {
-      text-align: center;
-      padding: 28px 0 8px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: .9rem;
-      color: #1E3A8A;
-    }
-    .next-part a:hover { text-decoration: underline; }
-
-    .comments {
-      padding: 40px 0 48px;
+    /* ===== LEIA TAMBÉM ===== */
+    .read-also {
       border-top: 1px solid #E5E7EB;
+      padding-top: 40px;
+      margin-top: 48px;
     }
-    .comments-title {
+    .read-also h3 {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #1F2937;
       margin-bottom: 24px;
     }
-    .comments-title span { color: #6B7280; font-weight: 400; }
-    .comment {
-      display: flex;
-      gap: 14px;
-      padding: 20px 0;
-      border-bottom: 1px solid #E5E7EB;
+    .read-also .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
-    .comment:last-child { border-bottom: none; }
-    .comment-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #E5E7EB;
+    .read-also .card {
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .read-also .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    .read-also .card .thumb {
+      aspect-ratio: 16/9;
+      background: #F7F8FC;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: .85rem;
-      color: #6B7280;
-      flex-shrink: 0;
+      font-size: .75rem;
+      color: #9CA3AF;
     }
-    .comment-avatar--blue { background: #DBEAFE; color: #1E3A8A; }
-    .comment-avatar--green { background: #D1FAE5; color: #065F46; }
-    .comment-avatar--purple { background: #EDE9FE; color: #5B21B6; }
-    .comment-body { flex: 1; }
-    .comment-author { font-weight: 600; font-size: .9rem; color: #1F2937; }
-    .comment-date { font-size: .78rem; color: #9CA3AF; margin-left: 10px; font-weight: 400; }
-    .comment-text { font-size: .9rem; color: #4B5563; margin-top: 4px; line-height: 1.6; }
-    .comment-reply {
-      font-size: .82rem;
+    .read-also .card .info { padding: 16px 18px 18px; }
+    .read-also .card .cat {
+      font-size: .65rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
       color: #1E3A8A;
-      font-weight: 500;
-      margin-top: 8px;
-      display: inline-block;
-      cursor: pointer;
-    }
-    .comment-reply:hover { text-decoration: underline; }
-
-    .site-footer {
-      background: #1E3A8A;
-      color: rgba(255,255,255,.6);
-      padding: 32px 0 24px;
-      text-align: center;
-    }
-    .site-footer .logo {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       margin-bottom: 6px;
     }
-    .site-footer .logo span { color: #FACC15; }
-    .site-footer p { font-size: .82rem; margin-bottom: 4px; }
-    .site-footer .links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin: 12px 0 16px;
-      font-size: .82rem;
-    }
-    .site-footer .links a:hover { color: #FACC15; }
+    .read-also .card h4 { font-size: .9rem; font-weight: 600; color: #1F2937; line-height: 1.4; }
 
+    /* ===== FAQ ===== */
+    .faq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 28px 0 44px;
+    }
+    .faq-item {
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      padding: 20px 24px;
+      transition: box-shadow .2s;
+    }
+    .faq-item:hover { box-shadow: 0 2px 12px rgba(0,0,0,.03); }
+    .faq-item h4 { font-size: .95rem; font-weight: 600; color: #1F2937; margin-bottom: 6px; }
+    .faq-item p { font-size: .9rem; color: #6B7280; margin-bottom: 0; }
+
+    /* ===== COMMENTS ===== */
+    .comments-section {
+      border-top: 1px solid #E5E7EB;
+      padding-top: 40px;
+      margin-top: 48px;
+    }
+    .comments-section h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #1F2937;
+      margin-bottom: 24px;
+    }
+    .comments-section h3 span { color: #6B7280; font-weight: 400; font-size: .95rem; }
+    .comment {
+      display: flex;
+      gap: 14px;
+      padding: 22px 0;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .comment:last-child { border-bottom: none; }
+    .comment .avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .8rem;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .comment .body { flex: 1; }
+    .comment .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .comment .name { font-weight: 600; font-size: .9rem; color: #1F2937; }
+    .comment .stars { color: #FACC15; font-size: .75rem; letter-spacing: 1px; }
+    .comment .date { font-size: .78rem; color: #9CA3AF; }
+    .comment .text { font-size: .9rem; color: #4B5563; margin-top: 6px; line-height: 1.6; }
+    .comment .reply {
+      font-size: .82rem; color: #1E3A8A; font-weight: 500; margin-top: 8px; display: inline-block; cursor: pointer; transition: color .2s;
+    }
+    .comment .reply:hover { color: #FACC15; }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar { position: sticky; top: 90px; align-self: start; }
+    .sidebar section { margin-bottom: 36px; }
+    .sidebar h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .8rem;
+      color: #1F2937;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #FACC15;
+    }
+    .sidebar .cat-list { display: flex; flex-direction: column; gap: 10px; }
+    .sidebar .cat-list a {
+      font-size: .85rem; color: #6B7280; display: flex; align-items: center; gap: 8px; transition: color .2s;
+    }
+    .sidebar .cat-list a:hover { color: #1E3A8A; }
+    .sidebar .cat-list a .count { font-size: .75rem; color: #9CA3AF; margin-left: auto; }
+
+    .sidebar .popular-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .sidebar .popular-item:last-child { border-bottom: none; }
+    .sidebar .popular-item .thumb {
+      width: 56px; height: 56px; border-radius: 8px; background: #F7F8FC; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: .6rem; color: #9CA3AF;
+    }
+    .sidebar .popular-item .info { flex: 1; }
+    .sidebar .popular-item .info .title { font-size: .82rem; font-weight: 600; color: #1F2937; line-height: 1.4; }
+    .sidebar .popular-item .info .date { font-size: .72rem; color: #9CA3AF; margin-top: 4px; }
+
+    .sidebar .newsletter-box {
+      background: #F7F8FC;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .sidebar .newsletter-box h5 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .9rem; color: #1F2937; margin-bottom: 6px; }
+    .sidebar .newsletter-box p { font-size: .78rem; color: #6B7280; margin-bottom: 14px; }
+    .sidebar .newsletter-box input {
+      width: 100%; padding: 10px 14px; border: 1px solid #E5E7EB; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: .82rem; margin-bottom: 10px; outline: none;
+      transition: border-color .2s;
+    }
+    .sidebar .newsletter-box input:focus { border-color: #1E3A8A; }
+    .sidebar .newsletter-box button {
+      width: 100%; padding: 10px; background: #1E3A8A; color: #fff; border: none; border-radius: 8px;
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .78rem; cursor: pointer;
+      text-transform: uppercase; letter-spacing: .5px;
+      transition: background .2s;
+    }
+    .sidebar .newsletter-box button:hover { background: #1e40af; }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: #1E3A8A;
+      padding: 48px 0 32px;
+      margin-top: 0;
+    }
+    .site-footer .container { max-width: 1120px; }
+    .site-footer .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .site-footer .col .logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .site-footer .col .logo span { color: #FACC15; }
+    .site-footer .col p { font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.6; }
+    .site-footer .col h5 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .82rem;
+      color: #fff;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .site-footer .col a {
+      display: block;
+      font-size: .82rem;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 8px;
+      transition: color .2s;
+    }
+    .site-footer .col a:hover { color: #FACC15; }
+    .site-footer .bottom {
+      text-align: center;
+      padding-top: 24px;
+      font-size: .8rem;
+      color: rgba(255,255,255,.35);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .fade-in { opacity: 0; transition: opacity .8s ease; }
+    .fade-in.visible { opacity: 1; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .site-menu { display: none; }
+      .site-menu.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #1E3A8A; padding: 16px 24px; gap: 14px; }
+      .site-menu-toggle { display: block; }
+      .article-header h1 { font-size: 1.8rem; }
+      .article-header .subtitle { font-size: 1rem; }
+      .read-also .grid { grid-template-columns: 1fr; }
+      .site-footer .grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .checklist-section { padding: 28px 20px; }
+      .cta-final { padding: 36px 24px; }
+      .cta-final h3 { font-size: 1.2rem; }
+      .cta-final .btn { width: 100%; height: 54px; font-size: .9rem; padding: 0 24px; }
+      .cta-final .secure { flex-direction: column; align-items: center; gap: 6px; }
+      .article-body .learn-box { padding: 24px 20px; }
+      .summary-box { padding: 28px 24px; }
+    }
     @media (max-width: 600px) {
-      .site-header .container { padding-top: 12px; padding-bottom: 12px; }
-      .site-logo { font-size: 1rem; }
-      .site-menu { gap: 16px; font-size: .78rem; }
-      .article-header { padding: 28px 0 20px; }
+      .article-header { padding: 32px 0 24px; }
       .article-header h1 { font-size: 1.5rem; }
       .article-header .subtitle { font-size: .95rem; }
       .article-meta { font-size: .78rem; gap: 10px; }
-      .article-meta .author-avatar { width: 30px; height: 30px; font-size: .7rem; }
+      .article-meta .author-avatar { width: 34px; height: 34px; font-size: .75rem; }
+      .article-meta .meta-item svg { width: 12px; height: 12px; }
+      .article-share { margin-left: 0; width: 100%; justify-content: flex-start; margin-top: 4px; }
       .article-body p { font-size: .95rem; }
-      .cta-final { padding: 32px 20px; }
-      .cta-final h3 { font-size: 1.15rem; }
-      .cta-final .btn { width: 100%; height: 50px; font-size: .85rem; padding: 0 20px; }
-      .cta-final .secure { flex-direction: column; align-items: center; gap: 6px; }
-      .comment { gap: 10px; }
-      .comment-avatar { width: 34px; height: 34px; font-size: .75rem; }
+      .article-body h2 { font-size: 1.2rem; margin-top: 36px; }
+      .article-body .quote-block { padding: 24px 20px; }
+      .article-body .quote-block p { font-size: 1rem; }
+      .page-layout { padding: 0 16px; }
+      .container { padding: 0 16px; }
+      .site-footer .grid { grid-template-columns: 1fr; text-align: center; }
+      .comment .avatar { width: 36px; height: 36px; font-size: .7rem; }
+      .faq-item { padding: 16px 18px; }
+      .site-header .container { padding-top: 12px; padding-bottom: 12px; }
+      .site-logo { font-size: 1rem; }
+    }
+    @media (max-width: 400px) {
+      .article-header h1 { font-size: 1.3rem; }
+      .article-body p { font-size: .9rem; }
+      .summary-box .items .item { font-size: .85rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ===== HEADER PORTAL ===== -->
+<div id="reading-progress"></div>
+
+<!-- ===== SITE HEADER ===== -->
 <header class="site-header">
   <div class="container">
     <div class="site-logo">Família<span>Cristã</span></div>
-    <nav class="site-menu">
+    <button class="site-menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    <nav class="site-menu" id="siteMenu">
       <a href="#">Início</a>
       <a href="#">Família</a>
       <a href="#">Educação</a>
@@ -422,712 +762,689 @@
   </div>
 </div>
 
-<!-- ===== ARTICLE ===== -->
-<article>
-  <div class="container">
-    <header class="article-header">
-      <div class="category-label">Família e Educação Cristã</div>
-      <h1>O dia em que percebi que meu filho sabia mais sobre os desenhos que assistia do que sobre as histórias da Bíblia.</h1>
-      <p class="subtitle">Levá-lo à igreja todos os domingos parecia suficiente. Até que uma conversa simples me mostrou que eu estava deixando o ensino mais importante acontecer apenas uma vez por semana.</p>
-      <div class="article-meta">
-        <span class="author">
-          <span class="author-avatar">L</span>
-          <span class="author-info">
-            <span class="author-name">Lucas Almeida</span>
-            <span class="author-role">Família & Fé</span>
+<!-- ===== PAGE LAYOUT ===== -->
+<div class="page-layout">
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
+
+    <article>
+      <header class="article-header fade-in">
+        <div class="category-label">Família e Educação Cristã</div>
+        <h1>O dia em que percebi que meu filho sabia mais sobre os desenhos que assistia do que sobre as histórias da Bíblia.</h1>
+        <p class="subtitle">Levá-lo à igreja todos os domingos parecia suficiente. Até que uma conversa simples me mostrou que eu estava deixando o ensino mais importante acontecer apenas uma vez por semana.</p>
+        <div class="article-meta">
+          <span class="author">
+            <span class="author-avatar">L</span>
+            <span class="author-info">
+              <span class="author-name">Lucas Almeida</span>
+              <span class="author-role">Família & Fé</span>
+            </span>
           </span>
-        </span>
-        <span class="dot"></span>
-        <span>Publicado hoje</span>
-        <span class="dot"></span>
-        <span>8 min de leitura</span>
-      </div>
-    </header>
-
-    <div class="featured-image">
-      <img src="modpack 3d/ChatGPT Image 4 de jul. de 2026, 10_57_19.png" alt="Pai lendo a Bíblia com o filho à mesa" />
-      <div class="caption">Pai e filho compartilhando um momento de aprendizado bíblico em casa. — Foto: Getty Images</div>
-    </div>
-
-    <div class="article-body">
-
-      <p>Durante muito tempo, eu acreditava que estava fazendo a minha parte.</p>
-
-      <p>Meu filho ia à igreja todos os domingos.</p>
-
-      <p>Participava da salinha infantil.</p>
-
-      <p>Cantava os louvores com entusiasmo.</p>
-
-      <p>Voltava para casa feliz, contando algumas histórias que tinha ouvido.</p>
-
-      <p>E, sinceramente, eu pensava:</p>
-
-      <p><em>"Ele está aprendendo sobre Deus. Está tudo certo."</em></p>
-
-      <p>Durante a semana, porém, a rotina era outra.</p>
-
-      <p>Escola.</p>
-
-      <p>Trabalho.</p>
-
-      <p>Compromissos.</p>
-
-      <p>Quando sobrava um tempo, ele queria assistir a um desenho, brincar ou jogar alguma coisa.</p>
-
-      <p>Eu também chegava cansado.</p>
-
-      <p>E, sem perceber, fomos deixando para a igreja uma responsabilidade que também era nossa como pais.</p>
-
-      <p>Até que uma pergunta aparentemente simples mudou completamente a forma como eu enxergava isso.</p>
-
-      <hr />
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">A conversa que me fez parar para pensar</h2>
-
-      <p>Era um sábado à tarde.</p>
-
-      <p>Estávamos sentados na mesa da cozinha enquanto ele desenhava.</p>
-
-      <p>Olhei para aquele desenho cheio de cores e resolvi fazer uma pergunta qualquer.</p>
-
-      <p>— Filho... qual foi o primeiro milagre que Jesus fez?</p>
-
-      <p>Ele parou por alguns segundos.</p>
-
-      <p>Franziu a testa.</p>
-
-      <p>Pensou.</p>
-
-      <p>Depois respondeu baixinho:</p>
-
-      <p>— Acho que... não lembro.</p>
-
-      <p>Sorri e disse que tudo bem.</p>
-
-      <p>Então perguntei outra coisa.</p>
-
-      <p>— E quem construiu a arca?</p>
-
-      <p>Mais alguns segundos de silêncio.</p>
-
-      <p>Antes que eu mudasse de assunto, ele começou a me contar, com um entusiasmo impressionante, tudo o que tinha acontecido no desenho que assistira naquela manhã.</p>
-
-      <p>Lembrava dos nomes dos personagens.</p>
-
-      <p>Das falas.</p>
-
-      <p>Das cenas.</p>
-
-      <p>Dos detalhes.</p>
-
-      <p>Foi naquele instante que caiu a ficha.</p>
-
-      <p>Meu filho não tinha dificuldade para aprender.</p>
-
-      <p>Ele aprendia muito bem.</p>
-
-      <p>A questão era outra.</p>
-
-      <p>Ele aprendia aquilo com que tinha contato todos os dias.</p>
-
-      <hr />
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">O que eu descobri depois daquela conversa</h2>
-
-      <p>Naquela noite, depois que ele foi dormir, aquela conversa continuou na minha cabeça.</p>
-
-      <p>Não porque meu filho não soube responder.</p>
-
-      <p>Mas porque eu percebi que a culpa não era dele.</p>
-
-      <p>Era minha.</p>
-
-      <p>Pela primeira vez comecei a me perguntar:</p>
-
-      <p><em>"Quanto tempo meu filho passa aprendendo sobre Deus durante a semana?"</em></p>
-
-      <p>Fui somando mentalmente.</p>
-
-      <p>A Escola Bíblica no domingo.</p>
-
-      <p>Alguns minutos antes do culto.</p>
-
-      <p>Uma oração antes de dormir.</p>
-
-      <p>E... praticamente era isso.</p>
-
-      <p>Enquanto isso, todos os dias ele aprendia coisas novas na escola.</p>
-
-      <p>Via desenhos.</p>
-
-      <p>Brincava.</p>
-
-      <p>Assistia vídeos.</p>
-
-      <p>Fazia perguntas sobre tudo.</p>
-
-      <p>Foi quando entendi uma coisa que nunca tinha parado para pensar.</p>
-
-      <p>As crianças aprendem aquilo que faz parte da rotina delas.</p>
-
-      <p>Não aquilo que acontece apenas uma vez por semana.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">Comecei a pesquisar sobre como as crianças aprendem</h2>
-
-      <p>Na semana seguinte resolvi pesquisar mais sobre desenvolvimento infantil.</p>
-
-      <p>Li artigos.</p>
-
-      <p>Conversei com professores.</p>
-
-      <p>Assisti a vídeos de educadores.</p>
-
-      <p>E uma ideia aparecia repetidamente.</p>
-
-      <p>As crianças aprendem muito melhor quando participam da atividade.</p>
-
-      <p>Quando podem tocar.</p>
-
-      <p>Colorir.</p>
-
-      <p>Montar.</p>
-
-      <p>Resolver pequenos desafios.</p>
-
-      <p>Fazer perguntas.</p>
-
-      <p>Errar.</p>
-
-      <p>Tentar de novo.</p>
-
-      <p>Em outras palavras...</p>
-
-      <p>A brincadeira não atrapalha o aprendizado.</p>
-
-      <p>Ela faz parte dele.</p>
-
-      <p>Foi aí que percebi o erro que eu estava cometendo.</p>
-
-      <p>Eu queria que meu filho aprendesse sobre a Bíblia da mesma forma que eu aprendia.</p>
-
-      <p>Sentado.</p>
-
-      <p>Ouvindo.</p>
-
-      <p>Prestando atenção.</p>
-
-      <p>Mas ele era uma criança.</p>
-
-      <p>E crianças aprendem de um jeito completamente diferente.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">Então comecei a observar outras famílias</h2>
-
-      <p>No domingo seguinte, reparei em algo que antes passava despercebido.</p>
-
-      <p>Depois da aula infantil, várias crianças saíam felizes.</p>
-
-      <p>Cantando.</p>
-
-      <p>Comentando a história.</p>
-
-      <p>Mas, alguns minutos depois, já estavam falando sobre outra coisa.</p>
-
-      <p>Isso não significava que elas não gostavam da Bíblia.</p>
-
-      <p>Significava apenas que, como qualquer aprendizado, aquele conteúdo precisava continuar vivo durante a semana.</p>
-
-      <p>Foi nesse momento que eu percebi que a igreja fazia um trabalho importante.</p>
-
-      <p>Mas ela nunca poderia substituir aquilo que acontece dentro de casa.</p>
-
-      <p>Porque são os pequenos momentos do dia a dia que realmente ficam na memória de uma criança.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">A pergunta que mudou tudo</h2>
-
-      <p>Naquela mesma semana fiz uma promessa para mim mesmo.</p>
-
-      <p>Eu não queria transformar minha casa em uma sala de aula.</p>
-
-      <p>Nem obrigar meu filho a estudar.</p>
-
-      <p>Eu só queria encontrar uma forma de fazer com que aprender sobre Deus fosse tão natural quanto brincar, desenhar ou contar uma história antes de dormir.</p>
-
-      <p>Mas eu ainda não fazia ideia de como conseguir isso.</p>
-
-      <hr />
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">Eu percebi que o problema não era falta de vontade. Era falta de um caminho.</h2>
-
-      <p>Depois daquela semana, decidi que faria uma mudança.</p>
-
-      <p>Mesmo que fosse pequena.</p>
-
-      <p>Comecei separando quinze minutos do nosso dia.</p>
-
-      <p>Achei que seria suficiente.</p>
-
-      <p>Peguei uma Bíblia infantil.</p>
-
-      <p>Sentei ao lado do meu filho.</p>
-
-      <p>Li uma história.</p>
-
-      <p>Fiz algumas perguntas.</p>
-
-      <p>Ele respondeu duas ou três.</p>
-
-      <p>Depois começou a mexer nos lápis.</p>
-
-      <p>Olhou para a janela.</p>
-
-      <p>Mudou de assunto.</p>
-
-      <p>Naquele momento percebi que eu ainda estava tentando ensinar da mesma forma de sempre.</p>
-
-      <p>A única diferença era que agora eu tinha mais boa vontade.</p>
-
-      <p>Mas boa vontade, sozinha, não prende a atenção de uma criança.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">Passei mais tempo procurando atividades do que ensinando</h2>
-
-      <p>Foi então que comecei a procurar materiais na internet.</p>
-
-      <p>Achei algumas folhas para colorir.</p>
-
-      <p>Depois encontrei um caça-palavras.</p>
-
-      <p>Mais tarde imprimi um labirinto.</p>
-
-      <p>No dia seguinte já precisava procurar tudo de novo.</p>
-
-      <p>Cada atividade estava em um site diferente.</p>
-
-      <p>Algumas tinham qualidade ruim.</p>
-
-      <p>Outras estavam incompletas.</p>
-
-      <p>Muitas eram repetidas.</p>
-
-      <p>No fim das contas eu gastava quase uma hora procurando material...</p>
-
-      <p>...para usar durante quinze minutos.</p>
-
-      <p>Aquilo não fazia sentido.</p>
-
-      <p>Eu queria passar meu tempo com meu filho.</p>
-
-      <p>Não na frente do computador procurando PDFs espalhados pela internet.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">Foi aí que algo mudou</h2>
-
-      <p>Alguns dias depois, conversando com um casal da nossa igreja, o assunto surgiu naturalmente.</p>
-
-      <p>Comentei como estava sendo difícil encontrar atividades realmente boas.</p>
-
-      <p>A mãe sorriu e disse:</p>
-
-      <p>— Eu também fazia isso.</p>
-
-      <p>Até descobrir um material que já vinha com tudo organizado.</p>
-
-      <p>Confesso que achei que seria só mais um monte de folhas iguais às outras.</p>
-
-      <p>Mesmo assim resolvi dar uma chance.</p>
-
-      <p>Quando abri o material pela primeira vez, percebi que era completamente diferente do que eu imaginava.</p>
-
-      <p>Não eram apenas desenhos para pintar.</p>
-
-      <p>As atividades acompanhavam as histórias bíblicas.</p>
-
-      <p>Tinham desafios.</p>
-
-      <p>Jogos.</p>
-
-      <p>Perguntas simples.</p>
-
-      <p>Exercícios adaptados para diferentes idades.</p>
-
-      <p>Tudo organizado.</p>
-
-      <p>Pronto para imprimir.</p>
-
-      <p>Sem precisar procurar nada em vários lugares diferentes.</p>
-
-      <p>Naquele momento pensei:</p>
-
-      <p><em>"Era exatamente isso que eu estava tentando montar sozinho nos últimos meses."</em></p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">A primeira tarde usando o material</h2>
-
-      <p>No domingo seguinte resolvi testar.</p>
-
-      <p>Imprimi algumas páginas.</p>
-
-      <p>Separei lápis de cor.</p>
-
-      <p>Chamei meu filho.</p>
-
-      <p>Sem dizer que era uma "atividade da Bíblia".</p>
-
-      <p>Sem transformar aquilo em uma aula.</p>
-
-      <p>Sentamos juntos à mesa.</p>
-
-      <p>Começamos pela história de Noé.</p>
-
-      <p>Enquanto ele coloria a arca, fomos conversando.</p>
-
-      <p>Ele fazia perguntas.</p>
-
-      <p>Eu respondia.</p>
-
-      <p>Depois veio um jogo.</p>
-
-      <p>Em seguida um pequeno desafio.</p>
-
-      <p>Quando terminamos, ele olhou para mim e perguntou uma coisa que eu nunca tinha ouvido antes.</p>
-
-      <p>— Pai... semana que vem a gente faz de novo?</p>
-
-      <p>Naquele momento eu percebi que não era apenas um material diferente.</p>
-
-      <p>Era uma forma diferente de viver esses momentos juntos.</p>
-
-      <hr />
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">O que realmente mudou dentro da nossa casa</h2>
-
-      <p>Na primeira semana fizemos apenas duas atividades.</p>
-
-      <p>Nada extraordinário.</p>
-
-      <p>Foram cerca de vinte minutos depois do jantar.</p>
-
-      <p>Enquanto meu filho coloria uma das histórias bíblicas, começamos a conversar.</p>
-
-      <p>Sem perceber.</p>
-
-      <p>Sem eu precisar fazer perguntas difíceis.</p>
-
-      <p>Ele mesmo começou.</p>
-
-      <p>— Pai... por que Davi não ficou com medo do gigante?</p>
-
-      <p>Sorri.</p>
-
-      <p>Expliquei da forma mais simples que consegui.</p>
-
-      <p>Logo depois veio outra pergunta.</p>
-
-      <p>Depois outra.</p>
-
-      <p>Percebi que, pela primeira vez, nossa conversa sobre a Bíblia estava acontecendo naturalmente.</p>
-
-      <p>Sem parecer uma aula.</p>
-
-      <p>Sem parecer uma obrigação.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">As atividades eram apenas o começo</h2>
-
-      <p>Na semana seguinte aconteceu algo que me emocionou.</p>
-
-      <p>Cheguei do trabalho mais tarde.</p>
-
-      <p>Antes mesmo de eu tirar os sapatos, meu filho perguntou:</p>
-
-      <p>— Hoje a gente vai fazer mais uma atividade?</p>
-
-      <p>Confesso que fiquei alguns segundos em silêncio.</p>
-
-      <p>Porque, até pouco tempo atrás, eu precisava insistir para ele sentar comigo.</p>
-
-      <p>Agora era ele quem esperava aquele momento.</p>
-
-      <p>Não porque queria pintar.</p>
-
-      <p>Mas porque aquele tempo tinha se tornado nosso.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">Foi quando percebi que o maior benefício não estava no papel</h2>
-
-      <p>As folhas eram bonitas.</p>
-
-      <p>As atividades eram bem feitas.</p>
-
-      <p>Mas o verdadeiro valor não estava nelas.</p>
-
-      <p>Estava nas conversas que surgiam enquanto fazíamos cada uma.</p>
-
-      <p>Enquanto coloríamos a arca de Noé, falávamos sobre confiança.</p>
-
-      <p>Na história de Davi, conversávamos sobre coragem.</p>
-
-      <p>Quando estudávamos José, acabávamos falando sobre perdão.</p>
-
-      <p>As atividades apenas davam o início da conversa.</p>
-
-      <p>O resto acontecia naturalmente.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">Aos poucos, pequenas mudanças começaram a aparecer</h2>
-
-      <p>Meu filho começou a lembrar das histórias sem que eu perguntasse.</p>
-
-      <p>Durante o almoço comentava algo que tinha aprendido.</p>
-
-      <p>Às vezes fazia perguntas inesperadas.</p>
-
-      <p>Outras vezes queria contar a história para os avós.</p>
-
-      <p>Em um domingo, voltando da igreja, ele disse:</p>
-
-      <p>— Pai... hoje falaram de Moisés.</p>
-
-      <p>A gente já tinha estudado essa história.</p>
-
-      <p>Naquele momento percebi que ele não estava apenas decorando.</p>
-
-      <p>Ele estava conectando as histórias.</p>
-
-      <p>Começando a entendê-las.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">E eu também estava aprendendo</h2>
-
-      <p>Curiosamente, quem mais mudou talvez tenha sido eu.</p>
-
-      <p>Antes eu imaginava que ensinar a Palavra de Deus exigia muito tempo.</p>
-
-      <p>Muito conhecimento.</p>
-
-      <p>Muito preparo.</p>
-
-      <p>Hoje percebo que bastam alguns minutos.</p>
-
-      <p>Uma mesa.</p>
-
-      <p>Lápis de cor.</p>
-
-      <p>Uma boa atividade.</p>
-
-      <p>E disposição para conversar.</p>
-
-      <p>Não existe material que substitua a presença dos pais.</p>
-
-      <p>Mas um bom material pode tornar esse momento muito mais fácil.</p>
-
-      <p>Foi exatamente isso que aconteceu aqui em casa.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">Hoje nossa rotina é diferente</h2>
-
-      <p>Ainda existem dias corridos.</p>
-
-      <p>Ainda existem distrações.</p>
-
-      <p>Ainda existem telas.</p>
-
-      <p>Mas agora existe um momento da semana que pertence apenas a nós.</p>
-
-      <p>Sem celular.</p>
-
-      <p>Sem televisão.</p>
-
-      <p>Sem pressa.</p>
-
-      <p>Só eu, meu filho e a oportunidade de falar sobre Deus de uma forma leve.</p>
-
-      <p>Talvez, daqui a alguns anos, ele não se lembre de todas as atividades que fez.</p>
-
-      <p>Mas espero que nunca esqueça como se sentia quando estávamos sentados juntos aprendendo sobre a Palavra de Deus.</p>
-
-      <p>Porque, no fim das contas, era isso que eu realmente queria construir.</p>
-
-      <hr />
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">O material que facilitou tudo</h2>
-
-      <p>Se você leu até aqui, provavelmente se identificou com pelo menos uma dessas situações.</p>
-
-      <p>Talvez você também já tenha pensado:</p>
-
-      <p><em>"Eu queria ensinar mais sobre Deus ao meu filho, mas não sei por onde começar."</em></p>
-
-      <p>Ou talvez já tenha passado horas procurando atividades na internet e encontrado apenas materiais incompletos, repetitivos ou sem organização.</p>
-
-      <p>Foi exatamente por isso que resolvi compartilhar o material que mudou a nossa rotina.</p>
-
-      <p>Não porque ele fez milagres.</p>
-
-      <p>Mas porque tornou muito mais fácil criar momentos que antes simplesmente não aconteciam.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">O que existe dentro do Kit Bíblico Infantil</h2>
-
-      <p>O Kit Bíblico Infantil foi pensado para ajudar pais que desejam ensinar a Palavra de Deus de uma forma leve, divertida e adequada para a idade das crianças.</p>
-
-      <p>Dentro dele você encontra:</p>
-
-      <ul>
-        <li><strong>Mais de 400 atividades bíblicas prontas para imprimir</strong> — cada uma transforma histórias da Bíblia em momentos de aprendizado e interação</li>
-      </ul>
-
-      <ul>
-        <li><strong>Histórias bíblicas ilustradas</strong> — as crianças aprendem enquanto observam, pintam e conversam sobre cada personagem</li>
-      </ul>
-
-      <ul>
-        <li><strong>Jogos e desafios educativos</strong> — labirintos, caça-palavras, ligue os pontos, complete, descubra. Tudo pensado para manter o interesse</li>
-      </ul>
-
-      <ul>
-        <li><strong>Alfabetização e coordenação motora</strong> — enquanto aprendem sobre Deus, desenvolvem habilidades importantes para a infância</li>
-      </ul>
-
-      <ul>
-        <li><strong>Material digital</strong> — acesso imediato, pode imprimir quando quiser, quantas vezes precisar, no ritmo da sua família</li>
-      </ul>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">O que mais gostei</h2>
-
-      <p>Confesso que o que menos me chamou atenção foram as atividades.</p>
-
-      <p>O que realmente fez diferença foi perceber que eu não precisava mais improvisar.</p>
-
-      <p>Eu não precisava abrir dez sites diferentes procurando uma folha para imprimir.</p>
-
-      <p>Não precisava pensar em qual história contar.</p>
-
-      <p>Nem inventar perguntas.</p>
-
-      <p>Tudo já estava organizado.</p>
-
-      <p>Bastava sentar ao lado do meu filho.</p>
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">Talvez seja isso que esteja faltando na sua casa também</h2>
-
-      <p>Hoje existe uma disputa enorme pela atenção das crianças.</p>
-
-      <p>Televisão.</p>
-
-      <p>Celular.</p>
-
-      <p>Jogos.</p>
-
-      <p>Desenhos.</p>
-
-      <p>Tudo isso faz parte da infância.</p>
-
-      <p>Mas também acredito que a Palavra de Deus merece fazer parte da rotina delas.</p>
-
-      <p>Não apenas aos domingos.</p>
-
-      <p>Mas também nas pequenas conversas que acontecem dentro de casa.</p>
-
-      <p>Foi isso que esse material trouxe para a nossa família.</p>
-
-      <p>E talvez possa fazer sentido para a sua também.</p>
-
-      <hr />
-
-      <div class="cta-inline" style="margin-bottom:8px;">
-        <p>Se você deseja transformar alguns minutos da semana em momentos especiais de aprendizado, conversa e fé com seu filho, vale a pena conhecer o Kit Bíblico Infantil.</p>
-        <a href="index.html" style="font-size:.95rem;padding:14px 40px;">QUERO CONHECER O KIT BÍBLICO INFANTIL</a>
+          <span class="dot"></span>
+          <span class="meta-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Publicado hoje
+          </span>
+          <span class="dot"></span>
+          <span class="meta-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            8 min de leitura
+          </span>
+          <span class="article-share">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:14px;height:14px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+            Compartilhar
+          </span>
+        </div>
+      </header>
+
+      <div class="featured-image fade-up">
+        <img src="modpack 3d/ChatGPT Image 4 de jul. de 2026, 10_57_19.png" alt="Pai lendo a Bíblia com o filho à mesa" />
+        <div class="caption">Pai e filho compartilhando um momento de aprendizado bíblico em casa. — Foto: Getty Images</div>
       </div>
 
-      <hr />
-
-      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.2rem;color:#1E3A8A;margin:32px 0 20px;line-height:1.3;">Perguntas frequentes</h2>
-
-      <div class="highlight-box" style="margin:16px 0;">
-        <p style="font-weight:600;color:#1E3A8A;margin-bottom:4px;">Para qual idade é indicado?</p>
-        <p>O material foi desenvolvido para crianças entre 3 e 10 anos. As atividades são organizadas por nível de dificuldade, permitindo que cada criança avance no seu próprio ritmo.</p>
-      </div>
-
-      <div class="highlight-box" style="margin:16px 0;">
-        <p style="font-weight:600;color:#1E3A8A;margin-bottom:4px;">Preciso imprimir tudo de uma vez?</p>
-        <p>Não. Você pode imprimir apenas as atividades que for usar no dia. O material é seu para sempre e você imprime quantas vezes quiser.</p>
-      </div>
-
-      <div class="highlight-box" style="margin:16px 0;">
-        <p style="font-weight:600;color:#1E3A8A;margin-bottom:4px;">Posso usar com mais de um filho?</p>
-        <p>Sim. Como as atividades são em PDF, você pode imprimir quantas cópias precisar para todos os seus filhos.</p>
-      </div>
-
-      <div class="highlight-box" style="margin:16px 0 36px;">
-        <p style="font-weight:600;color:#1E3A8A;margin-bottom:4px;">Recebo imediatamente?</p>
-        <p>Sim. Assim que o pagamento for aprovado, você recebe o acesso por e-mail e pode começar a usar em poucos minutos.</p>
-      </div>
-
-      <div class="cta-final">
-        <h3>Quer ter acesso ao material completo?</h3>
-        <p>Mais de 400 atividades bíblicas prontas para imprimir. Acesso imediato. Garantia de 7 dias.</p>
-        <a href="index.html" class="btn">QUERO ACESSO IMEDIATO</a>
-        <div class="secure">
-          <span>🔒 Pagamento 100% seguro</span>
-          <span>⚡ Acesso imediato</span>
-          <span>🛡️ Garantia de 7 dias</span>
+      <!-- ===== SUMMARY BOX ===== -->
+      <div class="summary-box fade-up">
+        <div class="label">Nesta matéria você vai descobrir</div>
+        <div class="items">
+          <div class="item"><span class="icon"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span> O erro que muitos pais cometem</div>
+          <div class="item"><span class="icon"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span> Como crianças realmente aprendem</div>
+          <div class="item"><span class="icon"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span> O que mudou na nossa família</div>
+          <div class="item"><span class="icon"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span> Como ensinar a Bíblia de forma divertida</div>
+          <div class="item"><span class="icon"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span> O material que facilitou tudo</div>
         </div>
       </div>
 
-      <hr />
+      <!-- ===== BODY ===== -->
+      <div class="article-body">
 
-      <!-- ===== COMENTÁRIOS ===== -->
-      <section class="comments">
-        <h3 class="comments-title">Comentários <span>(12)</span></h3>
+        <!-- -- PARTE 1 -- -->
+        <p>Durante muito tempo, eu acreditava que estava fazendo a minha parte.</p>
+        <p>Meu filho ia à igreja todos os domingos.</p>
+        <p>Participava da salinha infantil.</p>
+        <p>Cantava os louvores com entusiasmo.</p>
+        <p>Voltava para casa feliz, contando algumas histórias que tinha ouvido.</p>
+        <p>E, sinceramente, eu pensava:</p>
+        <p><em>"Ele está aprendendo sobre Deus. Está tudo certo."</em></p>
 
-        <div class="comment">
-          <div class="comment-avatar comment-avatar--blue">A</div>
-          <div class="comment-body">
-            <div class="comment-author">Ana Carolina <span class="comment-date">há 3 horas</span></div>
-            <div class="comment-text">Me identifiquei tanto com esse relato. Comigo foi parecido, meu filho sabia tudo sobre os personagens dos desenhos mas pouco sobre a Bíblia. Isso me motivou a buscar mudanças.</div>
-            <span class="comment-reply">Responder</span>
+        <div class="inline-media fade-up">
+          <img src="modpack 3d/ChatGPT Image 4 de jul. de 2026, 10_57_19.png" alt="Família lendo Bíblia juntos" />
+          <div class="caption">Momentos em família fortalecem o aprendizado espiritual das crianças. — Foto: Unsplash</div>
+        </div>
+
+        <p>Durante a semana, porém, a rotina era outra.</p>
+        <p>Escola.</p>
+        <p>Trabalho.</p>
+        <p>Compromissos.</p>
+        <p>Quando sobrava um tempo, ele queria assistir a um desenho, brincar ou jogar alguma coisa.</p>
+        <p>Eu também chegava cansado.</p>
+        <p>E, sem perceber, fomos deixando para a igreja uma responsabilidade que também era nossa como pais.</p>
+        <p>Até que uma pergunta aparentemente simples mudou completamente a forma como eu enxergava isso.</p>
+
+        <div class="divider"><span></span><span class="diamond"></span><span></span></div>
+
+        <h2 class="fade-up">A conversa que me fez parar para pensar</h2>
+        <p>Era um sábado à tarde.</p>
+        <p>Estávamos sentados na mesa da cozinha enquanto ele desenhava.</p>
+        <p>Olhei para aquele desenho cheio de cores e resolvi fazer uma pergunta qualquer.</p>
+        <p>— Filho... qual foi o primeiro milagre que Jesus fez?</p>
+        <p>Ele parou por alguns segundos.</p>
+        <p>Franziu a testa.</p>
+        <p>Pensou.</p>
+        <p>Depois respondeu baixinho:</p>
+        <p>— Acho que... não lembro.</p>
+        <p>Sorri e disse que tudo bem.</p>
+        <p>Então perguntei outra coisa.</p>
+        <p>— E quem construiu a arca?</p>
+        <p>Mais alguns segundos de silêncio.</p>
+        <p>Antes que eu mudasse de assunto, ele começou a me contar, com um entusiasmo impressionante, tudo o que tinha acontecido no desenho que assistira naquela manhã.</p>
+        <p>Lembrava dos nomes dos personagens.</p>
+        <p>Das falas.</p>
+        <p>Das cenas.</p>
+        <p>Dos detalhes.</p>
+        <p>Foi naquele instante que caiu a ficha.</p>
+        <p>Meu filho não tinha dificuldade para aprender.</p>
+        <p>Ele aprendia muito bem.</p>
+        <p>A questão era outra.</p>
+        <p>Ele aprendia aquilo com que tinha contato todos os dias.</p>
+
+        <div class="learn-box fade-up">
+          <div class="learn-label">O que aprendemos</div>
+          <div class="learn-item"><span class="check">✓</span> Crianças aprendem brincando</div>
+          <div class="learn-item"><span class="check">✓</span> Repetição fortalece o aprendizado</div>
+          <div class="learn-item"><span class="check">✓</span> A participação dos pais faz diferença</div>
+        </div>
+
+        <div class="divider"><span></span><span class="diamond"></span><span></span></div>
+
+        <!-- -- PARTE 2 -- -->
+        <h2 class="fade-up">O que eu descobri depois daquela conversa</h2>
+        <p>Naquela noite, depois que ele foi dormir, aquela conversa continuou na minha cabeça.</p>
+        <p>Não porque meu filho não soube responder.</p>
+        <p>Mas porque eu percebi que a culpa não era dele.</p>
+        <p>Era minha.</p>
+        <p>Pela primeira vez comecei a me perguntar:</p>
+        <p><em>"Quanto tempo meu filho passa aprendendo sobre Deus durante a semana?"</em></p>
+        <p>Fui somando mentalmente.</p>
+        <p>A Escola Bíblica no domingo.</p>
+        <p>Alguns minutos antes do culto.</p>
+        <p>Uma oração antes de dormir.</p>
+        <p>E... praticamente era isso.</p>
+        <p>Enquanto isso, todos os dias ele aprendia coisas novas na escola.</p>
+        <p>Via desenhos.</p>
+        <p>Brincava.</p>
+        <p>Assistia vídeos.</p>
+        <p>Fazia perguntas sobre tudo.</p>
+        <p>Foi quando entendi uma coisa que nunca tinha parado para pensar.</p>
+        <p>As crianças aprendem aquilo que faz parte da rotina delas.</p>
+        <p>Não aquilo que acontece apenas uma vez por semana.</p>
+
+        <div class="quote-block fade-up">
+          <div class="quote-icon">"</div>
+          <p>"Ensine a criança no caminho em que deve andar, e ainda quando for velho não se desviará dele."</p>
+          <span class="author">— Provérbios 22:6</span>
+        </div>
+
+        <h2 class="fade-up">Comecei a pesquisar sobre como as crianças aprendem</h2>
+        <p>Na semana seguinte resolvi pesquisar mais sobre desenvolvimento infantil.</p>
+        <p>Li artigos.</p>
+        <p>Conversei com professores.</p>
+        <p>Assisti a vídeos de educadores.</p>
+        <p>E uma ideia aparecia repetidamente.</p>
+        <p>As crianças aprendem muito melhor quando participam da atividade.</p>
+        <p>Quando podem tocar.</p>
+        <p>Colorir.</p>
+        <p>Montar.</p>
+        <p>Resolver pequenos desafios.</p>
+        <p>Fazer perguntas.</p>
+        <p>Errar.</p>
+        <p>Tentar de novo.</p>
+        <p>Em outras palavras...</p>
+        <p>A brincadeira não atrapalha o aprendizado.</p>
+        <p>Ela faz parte dele.</p>
+        <p>Foi aí que percebi o erro que eu estava cometendo.</p>
+        <p>Eu queria que meu filho aprendesse sobre a Bíblia da mesma forma que eu aprendia.</p>
+        <p>Sentado.</p>
+        <p>Ouvindo.</p>
+        <p>Prestando atenção.</p>
+        <p>Mas ele era uma criança.</p>
+        <p>E crianças aprendem de um jeito completamente diferente.</p>
+
+        <h2 class="fade-up">Então comecei a observar outras famílias</h2>
+        <p>No domingo seguinte, reparei em algo que antes passava despercebido.</p>
+        <p>Depois da aula infantil, várias crianças saíam felizes.</p>
+        <p>Cantando.</p>
+        <p>Comentando a história.</p>
+        <p>Mas, alguns minutos depois, já estavam falando sobre outra coisa.</p>
+        <p>Isso não significava que elas não gostavam da Bíblia.</p>
+        <p>Significava apenas que, como qualquer aprendizado, aquele conteúdo precisava continuar vivo durante a semana.</p>
+        <p>Foi nesse momento que eu percebi que a igreja fazia um trabalho importante.</p>
+        <p>Mas ela nunca poderia substituir aquilo que acontece dentro de casa.</p>
+        <p>Porque são os pequenos momentos do dia a dia que realmente ficam na memória de uma criança.</p>
+
+        <div class="divider"><span></span><span class="diamond"></span><span></span></div>
+
+        <h2 class="fade-up">A pergunta que mudou tudo</h2>
+        <p>Naquela mesma semana fiz uma promessa para mim mesmo.</p>
+        <p>Eu não queria transformar minha casa em uma sala de aula.</p>
+        <p>Nem obrigar meu filho a estudar.</p>
+        <p>Eu só queria encontrar uma forma de fazer com que aprender sobre Deus fosse tão natural quanto brincar, desenhar ou contar uma história antes de dormir.</p>
+        <p>Mas eu ainda não fazia ideia de como conseguir isso.</p>
+
+        <div class="divider"><span></span><span class="diamond"></span><span></span></div>
+
+        <!-- -- PARTE 3 -- -->
+        <h2 class="fade-up">Eu percebi que o problema não era falta de vontade. Era falta de um caminho.</h2>
+        <p>Depois daquela semana, decidi que faria uma mudança.</p>
+        <p>Mesmo que fosse pequena.</p>
+        <p>Comecei separando quinze minutos do nosso dia.</p>
+        <p>Achei que seria suficiente.</p>
+        <p>Peguei uma Bíblia infantil.</p>
+        <p>Sentei ao lado do meu filho.</p>
+        <p>Li uma história.</p>
+        <p>Fiz algumas perguntas.</p>
+        <p>Ele respondeu duas ou três.</p>
+        <p>Depois começou a mexer nos lápis.</p>
+        <p>Olhou para a janela.</p>
+        <p>Mudou de assunto.</p>
+        <p>Naquele momento percebi que eu ainda estava tentando ensinar da mesma forma de sempre.</p>
+        <p>A única diferença era que agora eu tinha mais boa vontade.</p>
+        <p>Mas boa vontade, sozinha, não prende a atenção de uma criança.</p>
+
+        <div class="inline-media fade-up">
+          <img src="modpack 3d/ChatGPT Image 4 de jul. de 2026, 10_57_19.png" alt="Criança colorindo atividade bíblica" />
+          <div class="caption">Atividades manuais ajudam a manter o interesse das crianças durante o aprendizado. — Foto: Unsplash</div>
+        </div>
+
+        <h2 class="fade-up">Passei mais tempo procurando atividades do que ensinando</h2>
+        <p>Foi então que comecei a procurar materiais na internet.</p>
+        <p>Achei algumas folhas para colorir.</p>
+        <p>Depois encontrei um caça-palavras.</p>
+        <p>Mais tarde imprimi um labirinto.</p>
+        <p>No dia seguinte já precisava procurar tudo de novo.</p>
+        <p>Cada atividade estava em um site diferente.</p>
+        <p>Algumas tinham qualidade ruim.</p>
+        <p>Outras estavam incompletas.</p>
+        <p>Muitas eram repetidas.</p>
+        <p>No fim das contas eu gastava quase uma hora procurando material...</p>
+        <p>...para usar durante quinze minutos.</p>
+        <p>Aquilo não fazia sentido.</p>
+        <p>Eu queria passar meu tempo com meu filho.</p>
+        <p>Não na frente do computador procurando PDFs espalhados pela internet.</p>
+
+        <h2 class="fade-up">Foi aí que algo mudou</h2>
+        <p>Alguns dias depois, conversando com um casal da nossa igreja, o assunto surgiu naturalmente.</p>
+        <p>Comentei como estava sendo difícil encontrar atividades realmente boas.</p>
+        <p>A mãe sorriu e disse:</p>
+        <p>— Eu também fazia isso.</p>
+        <p>Até descobrir um material que já vinha com tudo organizado.</p>
+        <p>Confesso que achei que seria só mais um monte de folhas iguais às outras.</p>
+        <p>Mesmo assim resolvi dar uma chance.</p>
+        <p>Quando abri o material pela primeira vez, percebi que era completamente diferente do que eu imaginava.</p>
+        <p>Não eram apenas desenhos para pintar.</p>
+        <p>As atividades acompanhavam as histórias bíblicas.</p>
+        <p>Tinham desafios.</p>
+        <p>Jogos.</p>
+        <p>Perguntas simples.</p>
+        <p>Exercícios adaptados para diferentes idades.</p>
+        <p>Tudo organizado.</p>
+        <p>Pronto para imprimir.</p>
+        <p>Sem precisar procurar nada em vários lugares diferentes.</p>
+        <p>Naquele momento pensei:</p>
+        <p><em>"Era exatamente isso que eu estava tentando montar sozinho nos últimos meses."</em></p>
+
+        <h2 class="fade-up">A primeira tarde usando o material</h2>
+        <p>No domingo seguinte resolvi testar.</p>
+        <p>Imprimi algumas páginas.</p>
+        <p>Separei lápis de cor.</p>
+        <p>Chamei meu filho.</p>
+        <p>Sem dizer que era uma "atividade da Bíblia".</p>
+        <p>Sem transformar aquilo em uma aula.</p>
+        <p>Sentamos juntos à mesa.</p>
+        <p>Começamos pela história de Noé.</p>
+        <p>Enquanto ele coloria a arca, fomos conversando.</p>
+        <p>Ele fazia perguntas.</p>
+        <p>Eu respondia.</p>
+        <p>Depois veio um jogo.</p>
+        <p>Em seguida um pequeno desafio.</p>
+        <p>Quando terminamos, ele olhou para mim e perguntou uma coisa que eu nunca tinha ouvido antes.</p>
+        <p>— Pai... semana que vem a gente faz de novo?</p>
+        <p>Naquele momento eu percebi que não era apenas um material diferente.</p>
+        <p>Era uma forma diferente de viver esses momentos juntos.</p>
+
+        <div class="divider"><span></span><span class="diamond"></span><span></span></div>
+
+        <!-- -- PARTE 4 -- -->
+        <h2 class="fade-up">O que realmente mudou dentro da nossa casa</h2>
+        <p>Na primeira semana fizemos apenas duas atividades.</p>
+        <p>Nada extraordinário.</p>
+        <p>Foram cerca de vinte minutos depois do jantar.</p>
+        <p>Enquanto meu filho coloria uma das histórias bíblicas, começamos a conversar.</p>
+        <p>Sem perceber.</p>
+        <p>Sem eu precisar fazer perguntas difíceis.</p>
+        <p>Ele mesmo começou.</p>
+        <p>— Pai... por que Davi não ficou com medo do gigante?</p>
+        <p>Sorri.</p>
+        <p>Expliquei da forma mais simples que consegui.</p>
+        <p>Logo depois veio outra pergunta.</p>
+        <p>Depois outra.</p>
+        <p>Percebi que, pela primeira vez, nossa conversa sobre a Bíblia estava acontecendo naturalmente.</p>
+        <p>Sem parecer uma aula.</p>
+        <p>Sem parecer uma obrigação.</p>
+
+        <div class="quote-block fade-up">
+          <div class="quote-icon">"</div>
+          <p>"Meu filho de 5 anos amou! Agora ele mesmo pede para fazer as atividades todos os dias."</p>
+          <span class="author">— Ana Carvalho, mãe do Pedro (5 anos)</span>
+        </div>
+
+        <h2 class="fade-up">As atividades eram apenas o começo</h2>
+        <p>Na semana seguinte aconteceu algo que me emocionou.</p>
+        <p>Cheguei do trabalho mais tarde.</p>
+        <p>Antes mesmo de eu tirar os sapatos, meu filho perguntou:</p>
+        <p>— Hoje a gente vai fazer mais uma atividade?</p>
+        <p>Confesso que fiquei alguns segundos em silêncio.</p>
+        <p>Porque, até pouco tempo atrás, eu precisava insistir para ele sentar comigo.</p>
+        <p>Agora era ele quem esperava aquele momento.</p>
+        <p>Não porque queria pintar.</p>
+        <p>Mas porque aquele tempo tinha se tornado nosso.</p>
+
+        <div class="inline-media fade-up">
+          <img src="modpack 3d/ChatGPT Image 4 de jul. de 2026, 10_57_19.png" alt="Mesa com atividades bíblicas, lápis de cor e folhas" />
+          <div class="caption">Um momento simples à mesa pode se tornar uma memória inesquecível entre pais e filhos. — Foto: Unsplash</div>
+        </div>
+
+        <h2 class="fade-up">Foi quando percebi que o maior benefício não estava no papel</h2>
+        <p>As folhas eram bonitas.</p>
+        <p>As atividades eram bem feitas.</p>
+        <p>Mas o verdadeiro valor não estava nelas.</p>
+        <p>Estava nas conversas que surgiam enquanto fazíamos cada uma.</p>
+        <p>Enquanto coloríamos a arca de Noé, falávamos sobre confiança.</p>
+        <p>Na história de Davi, conversávamos sobre coragem.</p>
+        <p>Quando estudávamos José, acabávamos falando sobre perdão.</p>
+        <p>As atividades apenas davam o início da conversa.</p>
+        <p>O resto acontecia naturalmente.</p>
+
+        <div class="learn-box fade-up">
+          <div class="learn-label">O que aprendemos</div>
+          <div class="learn-item"><span class="check">✓</span> Pequenos momentos diários criam conexão real</div>
+          <div class="learn-item"><span class="check">✓</span> Atividades manuais abrem portas para conversas profundas</div>
+          <div class="learn-item"><span class="check">✓</span> O aprendizado acontece quando a criança participa ativamente</div>
+        </div>
+
+        <h2 class="fade-up">Aos poucos, pequenas mudanças começaram a aparecer</h2>
+        <p>Meu filho começou a lembrar das histórias sem que eu perguntasse.</p>
+        <p>Durante o almoço comentava algo que tinha aprendido.</p>
+        <p>Às vezes fazia perguntas inesperadas.</p>
+        <p>Outras vezes queria contar a história para os avós.</p>
+        <p>Em um domingo, voltando da igreja, ele disse:</p>
+        <p>— Pai... hoje falaram de Moisés.</p>
+        <p>A gente já tinha estudado essa história.</p>
+        <p>Naquele momento percebi que ele não estava apenas decorando.</p>
+        <p>Ele estava conectando as histórias.</p>
+        <p>Começando a entendê-las.</p>
+
+        <h2 class="fade-up">E eu também estava aprendendo</h2>
+        <p>Curiosamente, quem mais mudou talvez tenha sido eu.</p>
+        <p>Antes eu imaginava que ensinar a Palavra de Deus exigia muito tempo.</p>
+        <p>Muito conhecimento.</p>
+        <p>Muito preparo.</p>
+        <p>Hoje percebo que bastam alguns minutos.</p>
+        <p>Uma mesa.</p>
+        <p>Lápis de cor.</p>
+        <p>Uma boa atividade.</p>
+        <p>E disposição para conversar.</p>
+        <p>Não existe material que substitua a presença dos pais.</p>
+        <p>Mas um bom material pode tornar esse momento muito mais fácil.</p>
+        <p>Foi exatamente isso que aconteceu aqui em casa.</p>
+
+        <h2 class="fade-up">Hoje nossa rotina é diferente</h2>
+        <p>Ainda existem dias corridos.</p>
+        <p>Ainda existem distrações.</p>
+        <p>Ainda existem telas.</p>
+        <p>Mas agora existe um momento da semana que pertence apenas a nós.</p>
+        <p>Sem celular.</p>
+        <p>Sem televisão.</p>
+        <p>Sem pressa.</p>
+        <p>Só eu, meu filho e a oportunidade de falar sobre Deus de uma forma leve.</p>
+        <p>Talvez, daqui a alguns anos, ele não se lembre de todas as atividades que fez.</p>
+        <p>Mas espero que nunca esqueça como se sentia quando estávamos sentados juntos aprendendo sobre a Palavra de Deus.</p>
+        <p>Porque, no fim das contas, era isso que eu realmente queria construir.</p>
+
+        <div class="divider"><span></span><span class="diamond"></span><span></span></div>
+
+        <!-- -- PARTE 5 -- -->
+        <h2 class="fade-up">O material que facilitou tudo</h2>
+        <p>Se você leu até aqui, provavelmente se identificou com pelo menos uma dessas situações.</p>
+        <p>Talvez você também já tenha pensado:</p>
+        <p><em>"Eu queria ensinar mais sobre Deus ao meu filho, mas não sei por onde começar."</em></p>
+        <p>Ou talvez já tenha passado horas procurando atividades na internet e encontrado apenas materiais incompletos, repetitivos ou sem organização.</p>
+        <p>Foi exatamente por isso que resolvi compartilhar o material que mudou a nossa rotina.</p>
+        <p>Não porque ele fez milagres.</p>
+        <p>Mas porque tornou muito mais fácil criar momentos que antes simplesmente não aconteciam.</p>
+
+        <h2 class="fade-up">O que existe dentro do Kit Bíblico Infantil</h2>
+        <p>O Kit Bíblico Infantil foi pensado para ajudar pais que desejam ensinar a Palavra de Deus de uma forma leve, divertida e adequada para a idade das crianças.</p>
+        <p>Dentro dele você encontra:</p>
+        <ul>
+          <li><strong>Mais de 400 atividades bíblicas prontas para imprimir</strong> — cada uma transforma histórias da Bíblia em momentos de aprendizado e interação</li>
+          <li><strong>Histórias bíblicas ilustradas</strong> — as crianças aprendem enquanto observam, pintam e conversam sobre cada personagem</li>
+          <li><strong>Jogos e desafios educativos</strong> — labirintos, caça-palavras, ligue os pontos, complete, descubra. Tudo pensado para manter o interesse</li>
+          <li><strong>Alfabetização e coordenação motora</strong> — enquanto aprendem sobre Deus, desenvolvem habilidades importantes para a infância</li>
+          <li><strong>Material digital</strong> — acesso imediato, pode imprimir quando quiser, quantas vezes precisar, no ritmo da sua família</li>
+        </ul>
+
+        <h2 class="fade-up">O que mais gostei</h2>
+        <p>Confesso que o que menos me chamou atenção foram as atividades.</p>
+        <p>O que realmente fez diferença foi perceber que eu não precisava mais improvisar.</p>
+        <p>Eu não precisava abrir dez sites diferentes procurando uma folha para imprimir.</p>
+        <p>Não precisava pensar em qual história contar.</p>
+        <p>Nem inventar perguntas.</p>
+        <p>Tudo já estava organizado.</p>
+        <p>Bastava sentar ao lado do meu filho.</p>
+
+        <h2 class="fade-up">Talvez seja isso que esteja faltando na sua casa também</h2>
+        <p>Hoje existe uma disputa enorme pela atenção das crianças.</p>
+        <p>Televisão.</p>
+        <p>Celular.</p>
+        <p>Jogos.</p>
+        <p>Desenhos.</p>
+        <p>Tudo isso faz parte da infância.</p>
+        <p>Mas também acredito que a Palavra de Deus merece fazer parte da rotina delas.</p>
+        <p>Não apenas aos domingos.</p>
+        <p>Mas também nas pequenas conversas que acontecem dentro de casa.</p>
+        <p>Foi isso que esse material trouxe para a nossa família.</p>
+        <p>E talvez possa fazer sentido para a sua também.</p>
+
+        <div class="btn-inline fade-up">
+          <p>Se você deseja transformar alguns minutos da semana em momentos especiais de aprendizado, conversa e fé com seu filho, vale a pena conhecer o Kit Bíblico Infantil.</p>
+          <a href="index.html">Quero conhecer o Kit Bíblico Infantil</a>
+        </div>
+
+        <!-- ===== CHECKLIST ===== -->
+        <div class="checklist-section fade-up">
+          <h3>Será que este material é para sua família?</h3>
+          <div class="check-item">
+            <span class="box"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+            Você deseja ensinar a Bíblia ao seu filho de forma leve e divertida
+          </div>
+          <div class="check-item">
+            <span class="box"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+            Seu filho tem entre 3 e 10 anos de idade
+          </div>
+          <div class="check-item">
+            <span class="box"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+            Você quer passar mais tempo de qualidade com seu filho
+          </div>
+          <div class="check-item">
+            <span class="box"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+            Você busca um material pronto e organizado para não perder tempo preparando
+          </div>
+          <div class="check-item">
+            <span class="box"><svg fill="none" stroke="#fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+            Você acredita que a fé começa dentro de casa
           </div>
         </div>
 
-        <div class="comment">
-          <div class="comment-avatar comment-avatar--green">P</div>
-          <div class="comment-body">
-            <div class="comment-author">Paulo Sérgio <span class="comment-date">há 5 horas</span></div>
-            <div class="comment-text">Lucas, obrigado por compartilhar. Estou passando exatamente por isso e seu texto me fez refletir. Vou começar hoje mesmo a mudar essa realidade aqui em casa.</div>
-            <span class="comment-reply">Responder</span>
+        <!-- ===== FAQ ===== -->
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.2rem;color:#1F2937;margin-top:44px;">Perguntas frequentes</h2>
+        <div class="faq-grid fade-up">
+          <div class="faq-item">
+            <h4>Para qual idade é indicado?</h4>
+            <p>O material foi desenvolvido para crianças entre 3 e 10 anos. As atividades são organizadas por nível de dificuldade, permitindo que cada criança avance no seu próprio ritmo.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Preciso imprimir tudo de uma vez?</h4>
+            <p>Não. Você pode imprimir apenas as atividades que for usar no dia. O material é seu para sempre e você imprime quantas vezes quiser.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Posso usar com mais de um filho?</h4>
+            <p>Sim. Como as atividades são em PDF, você pode imprimir quantas cópias precisar para todos os seus filhos.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Recebo imediatamente?</h4>
+            <p>Sim. Assim que o pagamento for aprovado, você recebe o acesso por e-mail e pode começar a usar em poucos minutos.</p>
           </div>
         </div>
 
-        <div class="comment">
-          <div class="comment-avatar comment-avatar--purple">C</div>
-          <div class="comment-body">
-            <div class="comment-author">Cristiana Moraes <span class="comment-date">há 1 dia</span></div>
-            <div class="comment-text">Que texto maravilhoso! Isso é tão verdade. Nós terceirizamos o ensino bíblico para a igreja sem perceber. O lar é o primeiro lugar onde a fé deve ser cultivada.</div>
-            <span class="comment-reply">Responder</span>
+        <!-- ===== LEIA TAMBÉM ===== -->
+        <div class="read-also fade-up">
+          <h3>Leia também</h3>
+          <div class="grid">
+            <div class="card">
+              <div class="thumb">📖</div>
+              <div class="info">
+                <div class="cat">Educação</div>
+                <h4>Como criar filhos que amam a Palavra de Deus desde pequenos</h4>
+              </div>
+            </div>
+            <div class="card">
+              <div class="thumb">👨‍👩‍👦</div>
+              <div class="info">
+                <div class="cat">Família</div>
+                <h4>5 momentos simples que fortalecem a fé das crianças em casa</h4>
+              </div>
+            </div>
+            <div class="card">
+              <div class="thumb">📚</div>
+              <div class="info">
+                <div class="cat">Fé</div>
+                <h4>O poder das histórias bíblicas no desenvolvimento infantil</h4>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="comment">
-          <div class="comment-avatar">F</div>
-          <div class="comment-body">
-            <div class="comment-author">Felipe Andrade <span class="comment-date">há 2 dias</span></div>
-            <div class="comment-text">Muito bom! Ansioso pela parte 2. Também passei por uma situação parecida e hoje buscamos materiais que ajudem no dia a dia.</div>
-            <span class="comment-reply">Responder</span>
+        <!-- ===== CTA FINAL ===== -->
+        <div class="cta-final fade-up">
+          <h3>Quer ter acesso ao material completo?</h3>
+          <p>Mais de 400 atividades bíblicas prontas para imprimir. Acesso imediato. Garantia de 7 dias.</p>
+          <a href="index.html" class="btn">QUERO ACESSO IMEDIATO</a>
+          <div class="secure">
+            <span>🔒 Pagamento 100% seguro</span>
+            <span>⚡ Acesso imediato</span>
+            <span>🛡️ Garantia de 7 dias</span>
           </div>
         </div>
 
-      </section>
+        <div class="divider" style="margin-top:52px;"><span></span><span class="diamond"></span><span></span></div>
 
-    </div>
-  </div>
-</article>
+        <!-- ===== COMENTÁRIOS ===== -->
+        <section class="comments-section fade-up">
+          <h3>Comentários <span>(12)</span></h3>
+
+          <div class="comment">
+            <div class="avatar" style="background:#DBEAFE;color:#1E3A8A;">A</div>
+            <div class="body">
+              <div class="head">
+                <span class="name">Ana Carolina</span>
+                <span class="stars">★★★★★</span>
+                <span class="date">há 3 horas</span>
+              </div>
+              <div class="text">Me identifiquei tanto com esse relato. Comigo foi parecido, meu filho sabia tudo sobre os personagens dos desenhos mas pouco sobre a Bíblia. Isso me motivou a buscar mudanças.</div>
+              <span class="reply">Responder</span>
+            </div>
+          </div>
+
+          <div class="comment">
+            <div class="avatar" style="background:#D1FAE5;color:#065F46;">P</div>
+            <div class="body">
+              <div class="head">
+                <span class="name">Paulo Sérgio</span>
+                <span class="stars">★★★★★</span>
+                <span class="date">há 5 horas</span>
+              </div>
+              <div class="text">Lucas, obrigado por compartilhar. Estou passando exatamente por isso e seu texto me fez refletir. Vou começar hoje mesmo a mudar essa realidade aqui em casa.</div>
+              <span class="reply">Responder</span>
+            </div>
+          </div>
+
+          <div class="comment">
+            <div class="avatar" style="background:#EDE9FE;color:#5B21B6;">C</div>
+            <div class="body">
+              <div class="head">
+                <span class="name">Cristiana Moraes</span>
+                <span class="stars">★★★★★</span>
+                <span class="date">há 1 dia</span>
+              </div>
+              <div class="text">Que texto maravilhoso! Isso é tão verdade. Nós terceirizamos o ensino bíblico para a igreja sem perceber. O lar é o primeiro lugar onde a fé deve ser cultivada.</div>
+              <span class="reply">Responder</span>
+            </div>
+          </div>
+
+          <div class="comment">
+            <div class="avatar" style="background:#E5E7EB;color:#6B7280;">F</div>
+            <div class="body">
+              <div class="head">
+                <span class="name">Felipe Andrade</span>
+                <span class="stars">★★★★★</span>
+                <span class="date">há 2 dias</span>
+              </div>
+              <div class="text">Muito bom! Ansioso pela parte 2. Também passei por uma situação parecida e hoje buscamos materiais que ajudem no dia a dia.</div>
+              <span class="reply">Responder</span>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <section>
+      <h4>Categorias</h4>
+      <div class="cat-list">
+        <a href="#">Família <span class="count">(24)</span></a>
+        <a href="#">Educação <span class="count">(18)</span></a>
+        <a href="#">Fé e Espiritualidade <span class="count">(15)</span></a>
+        <a href="#">Escola Dominical <span class="count">(9)</span></a>
+        <a href="#">Relacionamento <span class="count">(11)</span></a>
+      </div>
+    </section>
+
+    <section>
+      <h4>Matérias Populares</h4>
+      <div class="popular-item">
+        <div class="thumb">📖</div>
+        <div class="info">
+          <div class="title">Oração com crianças: como ensinar seu filho a falar com Deus</div>
+          <div class="date">há 3 dias</div>
+        </div>
+      </div>
+      <div class="popular-item">
+        <div class="thumb">👶</div>
+        <div class="info">
+          <div class="title">Atividades bíblicas para cada idade: guia completo para pais</div>
+          <div class="date">há 1 semana</div>
+        </div>
+      </div>
+      <div class="popular-item">
+        <div class="thumb">📚</div>
+        <div class="info">
+          <div class="title">Por que histórias bíblicas são essenciais na infância?</div>
+          <div class="date">há 2 semanas</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="newsletter-box">
+        <h5>📬 Receba conteúdos</h5>
+        <p>Dicas para fortalecer a fé da sua família toda semana.</p>
+        <input type="email" placeholder="Seu melhor e-mail" />
+        <button type="submit">Inscrever-se</button>
+      </div>
+    </section>
+  </aside>
+
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
   <div class="container">
-    <div class="logo">Família<span>Cristã</span></div>
-    <div class="links">
-      <a href="#">Política de Privacidade</a>
-      <a href="#">Termos de Uso</a>
-      <a href="#">Contato</a>
-      <a href="#">Anuncie</a>
+    <div class="grid">
+      <div class="col">
+        <div class="logo">Família<span>Cristã</span></div>
+        <p>Portal de conteúdo cristão para famílias que desejam fortalecer a fé e os valores dentro de casa. Nosso compromisso é oferecer informação de qualidade com princípios bíblicos.</p>
+      </div>
+      <div class="col">
+        <h5>Institucional</h5>
+        <a href="#">Quem Somos</a>
+        <a href="#">Política Editorial</a>
+        <a href="#">Contato</a>
+        <a href="#">Anuncie</a>
+      </div>
+      <div class="col">
+        <h5>Legal</h5>
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Cookies</a>
+      </div>
+      <div class="col">
+        <h5>Navegue</h5>
+        <a href="#">Família</a>
+        <a href="#">Educação</a>
+        <a href="#">Fé</a>
+        <a href="#">Escola Dominical</a>
+      </div>
     </div>
-    <p>&copy; 2026 FamíliaCristã. Todos os direitos reservados.</p>
+    <div class="bottom">&copy; 2026 FamíliaCristã. Todos os direitos reservados.</div>
   </div>
 </footer>
+
+<script>
+  // ===== READING PROGRESS =====
+  const progressBar = document.getElementById('reading-progress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  });
+
+  // ===== FADE ON SCROLL =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
+
+  // ===== MOBILE MENU =====
+  const menuToggle = document.getElementById('menuToggle');
+  const siteMenu = document.getElementById('siteMenu');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      siteMenu.classList.toggle('open');
+    });
+  }
+</script>
 
 </body>
 </html>

@@ -6,29 +6,18 @@
   <title>Como ensinar a Bíblia para crianças de forma divertida (método comprovado)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Poppins', sans-serif;
-      color: #1e293b;
-      background: #f8fafc;
+      font-family: 'Inter', sans-serif;
+      color: #1F2937;
+      background: #FFFFFF;
       line-height: 1.8;
     }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    .advertorial-label {
-      text-align: center;
-      font-size: .7rem;
-      color: #94a3b8;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 10px 0;
-      border-bottom: 1px solid #e2e8f0;
-      background: #fff;
-    }
+    img { max-width: 100%; display: block; height: auto; }
 
     .container {
       max-width: 720px;
@@ -36,80 +25,147 @@
       padding: 0 24px;
     }
 
-    .article-header {
-      padding: 60px 0 40px;
-      text-align: center;
-      background: linear-gradient(135deg, #0A2F8F, #1A4DBD);
+    /* ===== TOPO AZUL ===== */
+    .topo {
+      background: #1E3A8A;
       color: #fff;
+      padding: 14px 0;
     }
-    .article-header .category {
-      display: inline-block;
-      background: #D4AF37;
-      color: #0A2F8F;
-      font-weight: 700;
-      font-size: .7rem;
-      letter-spacing: 1px;
-      padding: 6px 18px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+    .topo .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .topo-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -.5px;
+    }
+    .topo-menu {
+      display: flex;
+      gap: 24px;
+      font-size: .85rem;
+      font-weight: 500;
+      opacity: .85;
+    }
+    .topo-menu a:hover { opacity: 1; }
+
+    /* ===== HEADER ===== */
+    .article-header {
+      background: #1E3A8A;
+      color: #fff;
+      padding: 60px 0 50px;
     }
     .article-header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.3;
-      max-width: 600px;
-      margin: 0 auto 16px;
-    }
-    .article-header p {
-      font-size: 1rem;
-      color: rgba(255,255,255,.75);
-      max-width: 520px;
-      margin: 0 auto;
-    }
-    .article-meta {
-      font-size: .8rem;
-      color: rgba(255,255,255,.5);
-      margin-top: 20px;
-    }
-
-    .article-body {
-      background: #fff;
-      padding: 50px 0 60px;
-    }
-    .article-body .container {
-      max-width: 680px;
-    }
-    .article-body h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #0A2F8F;
-      margin: 40px 0 16px;
-      line-height: 1.3;
-    }
-    .article-body h2:first-child { margin-top: 0; }
-    .article-body p {
-      font-size: 1rem;
-      color: #475569;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      letter-spacing: -.02em;
       margin-bottom: 20px;
     }
-    .article-body p .highlight {
-      color: #D4AF37;
-      font-weight: 700;
+    .article-header .subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.8);
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 24px;
     }
-    .article-body .pull-quote {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      color: #0A2F8F;
-      text-align: center;
-      padding: 30px 0;
-      margin: 36px 0;
-      border-top: 2px solid #D4AF37;
-      border-bottom: 2px solid #D4AF37;
-      font-weight: 700;
-      line-height: 1.4;
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      font-size: .85rem;
+      color: rgba(255,255,255,.55);
     }
+    .article-meta .author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .article-meta .author-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .article-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.3); }
+
+    /* ===== ARTICLE BODY ===== */
+    .article-body {
+      padding: 48px 0 60px;
+    }
+    .article-body .featured-image {
+      margin: 0 -24px 36px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #F8FAFC;
+    }
+    .article-body .featured-image img {
+      width: 100%;
+      display: block;
+    }
+    .article-body .featured-image .caption {
+      font-size: .78rem;
+      color: #6B7280;
+      padding: 10px 24px;
+      background: #F8FAFC;
+    }
+    .article-body h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #1E3A8A;
+      margin: 44px 0 16px;
+      line-height: 1.3;
+    }
+    .article-body p {
+      font-size: 1.05rem;
+      color: #1F2937;
+      margin-bottom: 20px;
+    }
+    .article-body p strong { color: #1E3A8A; }
+
+    .article-body .highlight-box {
+      background: #FFF8E7;
+      border: 1px solid #FACC15;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin: 32px 0;
+    }
+    .article-body .highlight-box p {
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+
+    .article-body .quote-box {
+      background: #EEF4FF;
+      border-left: 4px solid #2563EB;
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 1.15rem;
+      color: #1E3A8A;
+      line-height: 1.6;
+    }
+    .article-body .quote-box .author {
+      display: block;
+      margin-top: 10px;
+      font-size: .85rem;
+      font-weight: 400;
+      color: #6B7280;
+    }
+
     .article-body ul {
       margin: 20px 0 30px;
       padding: 0;
@@ -118,112 +174,174 @@
     .article-body ul li {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
       font-size: 1rem;
-      color: #475569;
-      margin-bottom: 14px;
+      color: #1F2937;
+      margin-bottom: 12px;
     }
-    .article-body ul li .star {
-      color: #D4AF37;
-      font-size: 1rem;
+    .article-body ul li .check {
+      color: #22C55E;
+      font-weight: 700;
       flex-shrink: 0;
-      margin-top: 2px;
     }
 
-    .cta-box {
-      background: linear-gradient(135deg, #0A2F8F, #1A4DBD);
-      border-radius: 20px;
+    /* ===== CTA DISCRETO (meio do texto) ===== */
+    .cta-inline {
+      text-align: center;
+      margin: 36px 0 28px;
+    }
+    .cta-inline a {
+      display: inline-block;
+      padding: 14px 36px;
+      background: #22C55E;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      border-radius: 10px;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      transition: background .2s, transform .2s;
+    }
+    .cta-inline a:hover {
+      background: #16A34A;
+      transform: translateY(-1px);
+    }
+
+    /* ===== CTA FINAL ===== */
+    .cta-final {
+      background: #F8FAFC;
+      border-radius: 16px;
       padding: 48px 40px;
       text-align: center;
-      margin: 48px 0 0;
-      color: #fff;
+      margin-top: 48px;
+      border: 1px solid #E5E7EB;
     }
-    .cta-box h3 {
-      font-size: 1.5rem;
+    .cta-final h3 {
+      font-family: 'Poppins', sans-serif;
       font-weight: 800;
+      font-size: 1.5rem;
+      color: #1E3A8A;
       line-height: 1.3;
       margin-bottom: 12px;
     }
-    .cta-box p {
+    .cta-final p {
       font-size: 1rem;
-      color: rgba(255,255,255,.8);
-      margin-bottom: 24px;
+      color: #6B7280;
       max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 24px;
     }
-    .cta-btn {
+    .cta-final .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 64px;
+      height: 60px;
       padding: 0 48px;
-      background: linear-gradient(160deg, #C8A227, #D4AF37 25%, #F4C542 50%, #D4AF37 75%, #C8A227);
-      color: #0A2F8F;
-      font-weight: 800;
+      background: #22C55E;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
       font-size: 1rem;
       border: none;
-      border-radius: 16px;
+      border-radius: 12px;
       cursor: pointer;
       letter-spacing: .5px;
       text-transform: uppercase;
-      transition: transform .3s, box-shadow .3s;
-      box-shadow: 0 4px 0 0 #B8962E, 0 8px 24px rgba(212,175,55,.45);
+      transition: background .2s, transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 14px rgba(34,197,94,.35);
     }
-    .cta-btn:hover {
+    .cta-final .btn:hover {
+      background: #16A34A;
       transform: translateY(-2px);
-      box-shadow: 0 2px 0 0 #B8962E, 0 12px 35px rgba(212,175,55,.55);
+      box-shadow: 0 6px 20px rgba(34,197,94,.45);
     }
-    .cta-secure {
+    .cta-final .secure {
       margin-top: 16px;
       display: flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
     }
-    .cta-secure span {
-      font-size: .78rem;
-      color: rgba(255,255,255,.5);
+    .cta-final .secure span {
+      font-size: .8rem;
+      color: #6B7280;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .article-footer {
-      background: #f8fafc;
-      padding: 24px 0;
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #F8FAFC;
+      border-top: 1px solid #E5E7EB;
+      padding: 28px 0 24px;
       text-align: center;
-      font-size: .78rem;
-      color: #94a3b8;
+    }
+    .footer p {
+      font-size: .82rem;
+      color: #6B7280;
+      margin-bottom: 4px;
     }
 
+    /* ===== RESPONSIVO ===== */
     @media (max-width: 600px) {
-      .article-header { padding: 40px 0 30px; }
-      .article-header h1 { font-size: 1.6rem; }
+      .topo { padding: 12px 0; }
+      .topo-menu { gap: 14px; font-size: .78rem; }
+      .article-header { padding: 40px 0 36px; }
+      .article-header h1 { font-size: 1.75rem; }
+      .article-header .subtitle { font-size: 1rem; }
+      .article-meta { font-size: .78rem; gap: 10px; }
+      .article-body { padding: 32px 0 40px; }
+      .article-body .featured-image { margin: 0 -24px 28px; }
       .article-body h2 { font-size: 1.25rem; }
-      .article-body .pull-quote { font-size: 1.1rem; padding: 20px 0; }
-      .cta-box { padding: 36px 24px; }
-      .cta-box h3 { font-size: 1.2rem; }
-      .cta-btn { width: 100%; height: 56px; font-size: .9rem; padding: 0 24px; }
-      .cta-secure { flex-direction: column; align-items: center; gap: 8px; }
+      .article-body p { font-size: .95rem; }
+      .cta-final { padding: 36px 24px; }
+      .cta-final h3 { font-size: 1.2rem; }
+      .cta-final .btn { width: 100%; height: 54px; font-size: .9rem; padding: 0 24px; }
+      .cta-final .secure { flex-direction: column; align-items: center; gap: 8px; }
     }
   </style>
 </head>
 <body>
 
-<div class="advertorial-label">&#9679; ADVERTORIAL &#9679;</div>
-
-<header class="article-header">
+<!-- ===== TOPO AZUL ===== -->
+<header class="topo">
   <div class="container">
-    <div class="category">Educação Cristã</div>
-    <h1>Como ensinar a Bíblia para crianças de forma divertida (sem gastar horas preparando atividades)</h1>
-    <p>Um método simples que está ajudando milhares de pais a ensinar a Palavra de Deus enquanto seus filhos se divertem longe das telas.</p>
-    <div class="article-meta">Por Redação · 5 min de leitura</div>
+    <div class="topo-logo">📖 Kit Bíblico Infantil</div>
+    <nav class="topo-menu">
+      <a href="#">Início</a>
+      <a href="#">Conteúdo</a>
+      <a href="#">Contato</a>
+    </nav>
   </div>
 </header>
 
+<!-- ===== HEADER ===== -->
+<header class="article-header">
+  <div class="container">
+    <h1>Como ensinar a Bíblia para crianças de forma divertida (sem gastar horas preparando atividades)</h1>
+    <p class="subtitle">Um método simples que está ajudando milhares de pais a ensinar a Palavra de Deus enquanto seus filhos se divertem longe das telas.</p>
+    <div class="article-meta">
+      <span class="author">
+        <span class="author-avatar">R</span>
+        Por Redação
+      </span>
+      <span class="dot"></span>
+      <span>15 de julho de 2026</span>
+      <span class="dot"></span>
+      <span>5 min de leitura</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== CONTEÚDO ===== -->
 <article class="article-body">
   <div class="container">
+
+    <div class="featured-image">
+      <img src="modpack 3d/ChatGPT Image 4 de jul. de 2026, 10_57_19.png" alt="Kit Bíblico Infantil" />
+      <div class="caption">Material completo com mais de 400 atividades bíblicas para crianças.</div>
+    </div>
 
     <p>Se você é pai ou mãe cristão, provavelmente já sentiu o desejo de ensinar a Bíblia ao seu filho de um jeito que ele realmente <strong>entenda, se interesse e se divirta</strong>.</p>
 
@@ -231,7 +349,10 @@
 
     <p>Se isso parece familiar, você não está sozinho. Uma pesquisa recente mostrou que <strong>mais de 70% dos pais cristãos</strong> têm dificuldade em encontrar materiais de qualidade para ensinar histórias bíblicas aos filhos em casa.</p>
 
-    <div class="pull-quote">"Ensine a criança no caminho em que deve andar, e ainda quando for velho não se desviará dele." — Provérbios 22:6</div>
+    <div class="quote-box">
+      "Ensine a criança no caminho em que deve andar, e ainda quando for velho não se desviará dele."
+      <span class="author">— Provérbios 22:6</span>
+    </div>
 
     <h2>O desafio de ensinar a Palavra de Deus hoje</h2>
 
@@ -243,25 +364,36 @@
 
     <p>Diferente dos materiais comuns que você encontra soltos pela internet, o Kit Bíblico Infantil foi pensado para <strong>ensinar enquanto a criança brinca</strong>. Cada atividade foi desenhada para estimular o aprendizado sem que ela perceba que está estudando.</p>
 
+    <div class="highlight-box">
+      <p><strong>⚠️ Importante:</strong> O material foi desenvolvido por educadores cristãos com anos de experiência em ensino infantil. Cada atividade é pensada para desenvolver não apenas o conhecimento bíblico, mas também a alfabetização, coordenação motora e concentração da criança.</p>
+    </div>
+
     <p>O material inclui:</p>
 
     <ul>
-      <li><span class="star">&#9733;</span> <strong>Histórias bíblicas ilustradas</strong> que prendem a atenção das crianças</li>
-      <li><span class="star">&#9733;</span> <strong>Jogos e desafios educativos</strong> que tornam o aprendizado divertido</li>
-      <li><span class="star">&#9733;</span> <strong>Atividades de alfabetização e coordenação motora</strong> com temas bíblicos</li>
-      <li><span class="star">&#9733;</span> <strong>Desenhos para colorir</strong> de histórias como Arca de Noé, Davi e Golias e muitas outras</li>
-      <li><span class="star">&#9733;</span> <strong>Caça-palavras e labirintos</strong> que desenvolvem a concentração</li>
+      <li><span class="check">✔</span> <strong>Histórias bíblicas ilustradas</strong> que prendem a atenção das crianças</li>
+      <li><span class="check">✔</span> <strong>Jogos e desafios educativos</strong> que tornam o aprendizado divertido</li>
+      <li><span class="check">✔</span> <strong>Atividades de alfabetização e coordenação motora</strong> com temas bíblicos</li>
+      <li><span class="check">✔</span> <strong>Desenhos para colorir</strong> de histórias como Arca de Noé, Davi e Golias e muitas outras</li>
+      <li><span class="check">✔</span> <strong>Caça-palavras e labirintos</strong> que desenvolvem a concentração</li>
     </ul>
 
     <h2>Por que pais de todo o Brasil estão usando?</h2>
 
     <p>O sucesso do material está na sua praticidade. Você não precisa gastar horas preparando nada. <strong>É só imprimir e começar a usar</strong>. As atividades são organizadas por tema e idade, facilitando a escolha do que fazer a cada dia.</p>
 
+    <div class="cta-inline">
+      <a href="index.html">QUERO CONHECER O MATERIAL</a>
+    </div>
+
     <p>Além disso, o kit foi desenvolvido para crianças de <strong>3 a 10 anos</strong>, o que significa que serve tanto para os pequenos que estão começando a conhecer as histórias quanto para os maiores que já estão aprendendo a ler.</p>
 
     <p>E o melhor: enquanto seu filho aprende sobre Deus, ele também desenvolve a leitura, a coordenação motora, a concentração e valores cristãos que levará para a vida toda.</p>
 
-    <div class="pull-quote">"Meu filho de 5 anos amou! Agora ele mesmo pede para fazer as atividades todos os dias." — Ana Carvalho, mãe do Pedro</div>
+    <div class="quote-box">
+      "Meu filho de 5 anos amou! Agora ele mesmo pede para fazer as atividades todos os dias. Nunca imaginei que ele fosse se interessar tanto pelas histórias da Bíblia."
+      <span class="author">— Ana Carvalho, mãe do Pedro (5 anos)</span>
+    </div>
 
     <h2>Quanto custa e como ter acesso?</h2>
 
@@ -271,11 +403,12 @@
 
     <p>Para garantir o acesso imediato ao material completo, é só clicar no botão abaixo. O pagamento é único e seguro, e você ainda conta com <strong>7 dias de garantia incondicional</strong> — se não gostar, devolvemos 100% do seu dinheiro.</p>
 
-    <div class="cta-box">
+    <!-- ===== CTA FINAL ===== -->
+    <div class="cta-final">
       <h3>Quer ter acesso ao material completo?</h3>
       <p>Mais de 400 atividades bíblicas prontas para imprimir. Acesso imediato. Garantia de 7 dias.</p>
-      <a href="index.html" class="cta-btn">QUERO ACESSO IMEDIATO</a>
-      <div class="cta-secure">
+      <a href="index.html" class="btn">QUERO ACESSO IMEDIATO</a>
+      <div class="secure">
         <span>🔒 Pagamento 100% seguro</span>
         <span>⚡ Acesso imediato</span>
         <span>🛡️ Garantia de 7 dias</span>
@@ -285,10 +418,11 @@
   </div>
 </article>
 
-<footer class="article-footer">
+<!-- ===== RODAPÉ ===== -->
+<footer class="footer">
   <div class="container">
     <p>Este é um conteúdo informativo. O Kit Bíblico Infantil é a ferramenta recomendada.</p>
-    <p style="margin-top:4px;">&copy; 2026 Kit Bíblico Infantil. Todos os direitos reservados.</p>
+    <p>&copy; 2026 Kit Bíblico Infantil. Todos os direitos reservados.</p>
   </div>
 </footer>
 

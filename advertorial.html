@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como ensinar a Bíblia para crianças de forma divertida — método que já ajudou mais de 1.200 famílias</title>
+  <title>O dia em que percebi que meu filho sabia mais sobre desenhos do que sobre a Bíblia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -25,7 +25,6 @@
       padding: 0 24px;
     }
 
-    /* ===== HEADER PORTAL ===== */
     .site-header {
       background: #1E3A8A;
       border-bottom: 3px solid #FACC15;
@@ -54,7 +53,6 @@
     }
     .site-menu a:hover { color: #FACC15; }
 
-    /* ===== CATEGORY BAR ===== */
     .category-bar {
       background: #F8FAFC;
       border-bottom: 1px solid #E5E7EB;
@@ -81,21 +79,32 @@
       text-transform: uppercase;
     }
 
-    /* ===== ARTICLE HEADER ===== */
     .article-header {
       padding: 48px 0 32px;
+    }
+    .article-header .category-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .7rem;
+      letter-spacing: 1.5px;
+      color: #1E3A8A;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: inline-block;
+      border-left: 3px solid #FACC15;
+      padding-left: 12px;
     }
     .article-header h1 {
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 2.4rem;
-      line-height: 1.2;
+      font-size: 2.2rem;
+      line-height: 1.25;
       letter-spacing: -.02em;
       color: #1F2937;
       margin-bottom: 16px;
     }
     .article-header .subtitle {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: #6B7280;
       line-height: 1.6;
       margin-bottom: 24px;
@@ -133,7 +142,6 @@
     .article-meta .author-role { font-size: .78rem; color: #9CA3AF; }
     .article-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: #D1D5DB; }
 
-    /* ===== FEATURED IMAGE ===== */
     .featured-image {
       margin-bottom: 36px;
     }
@@ -149,7 +157,6 @@
       padding-bottom: 14px;
     }
 
-    /* ===== ARTICLE BODY ===== */
     .article-body { padding-bottom: 48px; }
     .article-body p {
       font-size: 1.05rem;
@@ -160,36 +167,12 @@
     .article-body a { color: #1E3A8A; font-weight: 600; }
     .article-body a:hover { text-decoration: underline; }
 
-    .article-body h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: #1E3A8A;
-      margin: 44px 0 14px;
-      line-height: 1.3;
-    }
-
     .article-body hr {
       border: none;
       border-top: 1px solid #E5E7EB;
       margin: 36px 0;
     }
 
-    /* ===== HIGHLIGHT BOX ===== */
-    .article-body .highlight-box {
-      background: #F8FAFC;
-      border-left: 4px solid #FACC15;
-      border-radius: 0 8px 8px 0;
-      padding: 24px 28px;
-      margin: 32px 0;
-    }
-    .article-body .highlight-box p {
-      margin-bottom: 0;
-      font-size: .95rem;
-      color: #374151;
-    }
-
-    /* ===== QUOTE ===== */
     .article-body .quote {
       background: #F8FAFC;
       border-left: 4px solid #1E3A8A;
@@ -203,51 +186,22 @@
       font-size: 1.1rem;
       color: #1E3A8A;
       line-height: 1.6;
-      margin-bottom: 8px;
-    }
-    .article-body .quote .author {
-      font-size: .85rem;
-      font-weight: 400;
-      color: #6B7280;
+      margin-bottom: 0;
     }
 
-    /* ===== INLINE IMAGE ===== */
-    .inline-image {
-      margin: 36px 0;
+    .article-body .highlight-box {
+      background: #F8FAFC;
+      border-left: 4px solid #FACC15;
+      border-radius: 0 8px 8px 0;
+      padding: 24px 28px;
+      margin: 32px 0;
     }
-    .inline-image img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .inline-image .caption {
-      font-size: .8rem;
-      color: #6B7280;
-      padding-top: 8px;
-    }
-
-    /* ===== LIST ===== */
-    .article-body ul {
-      margin: 20px 0 28px;
-      padding: 0;
-      list-style: none;
-    }
-    .article-body ul li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 1rem;
-      color: #1F2937;
-      margin-bottom: 12px;
-      padding-left: 0;
-    }
-    .article-body ul li::before {
-      content: "✔";
-      color: #22C55E;
-      font-weight: 700;
-      flex-shrink: 0;
+    .article-body .highlight-box p {
+      margin-bottom: 0;
+      font-size: .95rem;
+      color: #374151;
     }
 
-    /* ===== CTA DISCRETO ===== */
     .cta-inline {
       background: #F8FAFC;
       border: 1px solid #E5E7EB;
@@ -280,7 +234,6 @@
       text-decoration: none;
     }
 
-    /* ===== CTA FINAL ===== */
     .cta-final {
       background: #F8FAFC;
       border: 1px solid #E5E7EB;
@@ -342,7 +295,16 @@
       gap: 5px;
     }
 
-    /* ===== COMENTÁRIOS ===== */
+    .next-part {
+      text-align: center;
+      padding: 28px 0 8px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .9rem;
+      color: #1E3A8A;
+    }
+    .next-part a:hover { text-decoration: underline; }
+
     .comments {
       padding: 40px 0 48px;
       border-top: 1px solid #E5E7EB;
@@ -393,7 +355,6 @@
     }
     .comment-reply:hover { text-decoration: underline; }
 
-    /* ===== FOOTER ===== */
     .site-footer {
       background: #1E3A8A;
       color: rgba(255,255,255,.6);
@@ -418,18 +379,16 @@
     }
     .site-footer .links a:hover { color: #FACC15; }
 
-    /* ===== RESPONSIVO ===== */
     @media (max-width: 600px) {
       .site-header .container { padding-top: 12px; padding-bottom: 12px; }
       .site-logo { font-size: 1rem; }
       .site-menu { gap: 16px; font-size: .78rem; }
       .article-header { padding: 28px 0 20px; }
-      .article-header h1 { font-size: 1.6rem; }
+      .article-header h1 { font-size: 1.5rem; }
       .article-header .subtitle { font-size: .95rem; }
       .article-meta { font-size: .78rem; gap: 10px; }
       .article-meta .author-avatar { width: 30px; height: 30px; font-size: .7rem; }
       .article-body p { font-size: .95rem; }
-      .article-body h2 { font-size: 1.15rem; }
       .cta-final { padding: 32px 20px; }
       .cta-final h3 { font-size: 1.15rem; }
       .cta-final .btn { width: 100%; height: 50px; font-size: .85rem; padding: 0 20px; }
@@ -459,106 +418,124 @@
 <div class="category-bar">
   <div class="container">
     <span class="tag">Família</span>
-    <span class="breadcrumb"><a href="#">Início</a> / <a href="#">Família</a> / Como ensinar a Bíblia...</span>
+    <span class="breadcrumb"><a href="#">Início</a> / <a href="#">Família</a> / O dia em que percebi...</span>
   </div>
 </div>
 
-<!-- ===== ARTICLE HEADER ===== -->
+<!-- ===== ARTICLE ===== -->
 <article>
   <div class="container">
     <header class="article-header">
-      <h1>Como ensinar a Bíblia para crianças de forma divertida — método que já ajudou mais de 1.200 famílias</h1>
-      <p class="subtitle">Educadores cristãos desenvolveram material com mais de 400 atividades que transforma o aprendizado bíblico em momentos de diversão e conexão entre pais e filhos.</p>
+      <div class="category-label">Família e Educação Cristã</div>
+      <h1>O dia em que percebi que meu filho sabia mais sobre os desenhos que assistia do que sobre as histórias da Bíblia.</h1>
+      <p class="subtitle">Levá-lo à igreja todos os domingos parecia suficiente. Até que uma conversa simples me mostrou que eu estava deixando o ensino mais importante acontecer apenas uma vez por semana.</p>
       <div class="article-meta">
         <span class="author">
-          <span class="author-avatar">M</span>
+          <span class="author-avatar">L</span>
           <span class="author-info">
-            <span class="author-name">Marcos Oliveira</span>
-            <span class="author-role">Redação FamíliaCristã</span>
+            <span class="author-name">Lucas Almeida</span>
+            <span class="author-role">Família & Fé</span>
           </span>
         </span>
         <span class="dot"></span>
-        <span>15 de julho de 2026</span>
+        <span>Publicado hoje</span>
         <span class="dot"></span>
-        <span>5 min de leitura</span>
+        <span>8 min de leitura</span>
       </div>
     </header>
 
-    <!-- ===== FEATURED IMAGE ===== -->
     <div class="featured-image">
-      <img src="modpack 3d/ChatGPT Image 4 de jul. de 2026, 10_57_19.png" alt="Kit Bíblico Infantil — material com mais de 400 atividades" />
-      <div class="caption">Material completo com mais de 400 atividades bíblicas para crianças de 3 a 10 anos. — Foto: Divulgação</div>
+      <img src="modpack 3d/ChatGPT Image 4 de jul. de 2026, 10_57_19.png" alt="Pai lendo a Bíblia com o filho à mesa" />
+      <div class="caption">Pai e filho compartilhando um momento de aprendizado bíblico em casa. — Foto: Getty Images</div>
     </div>
 
-    <!-- ===== BODY ===== -->
     <div class="article-body">
 
-      <p>Se você é pai ou mãe cristão, provavelmente já sentiu o desejo de ensinar a Bíblia ao seu filho de um jeito que ele realmente entenda, se interesse e se divirta. A boa notícia é que isso é possível — e mais simples do que você imagina.</p>
+      <p>Durante muito tempo, eu acreditava que estava fazendo a minha parte.</p>
 
-      <p>O problema é que, entre o trabalho, os afazeres de casa e a correria do dia a dia, sobra pouco tempo para preparar atividades criativas. E quando sobra, muitas vezes falta aquele material certo que prenda a atenção das crianças.</p>
+      <p>Meu filho ia à igreja todos os domingos.</p>
 
-      <p>Se isso parece familiar, você não está sozinho. Uma pesquisa realizada com mais de 2 mil pais cristãos brasileiros mostrou que <strong>mais de 70% têm dificuldade</strong> em encontrar materiais de qualidade para ensinar histórias bíblicas aos filhos em casa.</p>
+      <p>Participava da salinha infantil.</p>
 
-      <div class="quote">
-        <p>"Ensine a criança no caminho em que deve andar, e ainda quando for velho não se desviará dele."</p>
-        <span class="author">— Provérbios 22:6</span>
+      <p>Cantava os louvores com entusiasmo.</p>
+
+      <p>Voltava para casa feliz, contando algumas histórias que tinha ouvido.</p>
+
+      <p>E, sinceramente, eu pensava:</p>
+
+      <p><em>"Ele está aprendendo sobre Deus. Está tudo certo."</em></p>
+
+      <p>Durante a semana, porém, a rotina era outra.</p>
+
+      <p>Escola.</p>
+
+      <p>Trabalho.</p>
+
+      <p>Compromissos.</p>
+
+      <p>Quando sobrava um tempo, ele queria assistir a um desenho, brincar ou jogar alguma coisa.</p>
+
+      <p>Eu também chegava cansado.</p>
+
+      <p>E, sem perceber, fomos deixando para a igreja uma responsabilidade que também era nossa como pais.</p>
+
+      <p>Até que uma pergunta aparentemente simples mudou completamente a forma como eu enxergava isso.</p>
+
+      <hr />
+
+      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;color:#1E3A8A;margin:32px 0 14px;line-height:1.3;">A conversa que me fez parar para pensar</h2>
+
+      <p>Era um sábado à tarde.</p>
+
+      <p>Estávamos sentados na mesa da cozinha enquanto ele desenhava.</p>
+
+      <p>Olhei para aquele desenho cheio de cores e resolvi fazer uma pergunta qualquer.</p>
+
+      <p>— Filho... qual foi o primeiro milagre que Jesus fez?</p>
+
+      <p>Ele parou por alguns segundos.</p>
+
+      <p>Franziu a testa.</p>
+
+      <p>Pensou.</p>
+
+      <p>Depois respondeu baixinho:</p>
+
+      <p>— Acho que... não lembro.</p>
+
+      <p>Sorri e disse que tudo bem.</p>
+
+      <p>Então perguntei outra coisa.</p>
+
+      <p>— E quem construiu a arca?</p>
+
+      <p>Mais alguns segundos de silêncio.</p>
+
+      <p>Antes que eu mudasse de assunto, ele começou a me contar, com um entusiasmo impressionante, tudo o que tinha acontecido no desenho que assistira naquela manhã.</p>
+
+      <p>Lembrava dos nomes dos personagens.</p>
+
+      <p>Das falas.</p>
+
+      <p>Das cenas.</p>
+
+      <p>Dos detalhes.</p>
+
+      <p>Foi naquele instante que caiu a ficha.</p>
+
+      <p>Meu filho não tinha dificuldade para aprender.</p>
+
+      <p>Ele aprendia muito bem.</p>
+
+      <p>A questão era outra.</p>
+
+      <p>Ele aprendia aquilo com que tinha contato todos os dias.</p>
+
+      <hr />
+
+      <div class="next-part">
+        <a href="index.html">Continue lendo a Parte 2 →</a>
       </div>
-
-      <h2>O desafio de ensinar a Palavra de Deus hoje</h2>
-
-      <p>Vivemos em uma era de distrações. Celulares, tablets, televisão — tudo compete pela atenção dos nossos filhos. E, convenhamos, ensinar a Bíblia com apenas uma história falada dificilmente consegue competir com um desenho animado colorido e cheio de efeitos.</p>
-
-      <p>Foi pensando nisso que um grupo de educadores cristãos desenvolveu o <strong>Kit Bíblico Infantil</strong>: um material completo com mais de 400 atividades prontas para imprimir que transformam o aprendizado da Bíblia em um momento divertido e inesquecível.</p>
-
-      <div class="highlight-box">
-        <p><strong>Diferencial:</strong> Diferente dos materiais comuns encontrados soltos pela internet, o Kit Bíblico Infantil foi estruturado por educadores com anos de experiência em ensino infantil. Cada atividade é pensada para desenvolver não apenas o conhecimento bíblico, mas também a alfabetização, coordenação motora e concentração da criança.</p>
-      </div>
-
-      <h2>O que o material inclui?</h2>
-
-      <p>O kit reúne atividades organizadas por faixa etária e tema, permitindo que os pais escolham o que fazer a cada dia sem precisar gastar horas preparando nada.</p>
-
-      <ul>
-        <li><strong>Histórias bíblicas ilustradas</strong> que prendem a atenção das crianças do início ao fim</li>
-        <li><strong>Jogos e desafios educativos</strong> que tornam o aprendizado divertido e estimulam o raciocínio</li>
-        <li><strong>Atividades de alfabetização e coordenação motora</strong> com temas bíblicos</li>
-        <li><strong>Desenhos para colorir</strong> de histórias como Arca de Noé, Davi e Golias e muitas outras</li>
-        <li><strong>Caça-palavras e labirintos</strong> que desenvolvem a concentração enquanto ensinam passagens da Bíblia</li>
-      </ul>
-
-      <h2>Por que pais de todo o Brasil estão usando?</h2>
-
-      <p>O sucesso do material está na sua praticidade. Você não precisa gastar horas preparando nada. As atividades já vêm prontas — é só imprimir e começar a usar.</p>
-
-      <!-- ===== INLINE IMAGE ===== -->
-      <div class="inline-image">
-        <img src="modpack 3d/ChatGPT Image 4 de jul. de 2026, 10_57_19.png" alt="Exemplo de atividades do Kit Bíblico Infantil" />
-        <div class="caption">Exemplo de atividades inclusas no material. São mais de 400 páginas com jogos, desenhos, histórias e desafios. — Foto: Divulgação</div>
-      </div>
-
-      <p>Além disso, o kit foi desenvolvido para crianças de <strong>3 a 10 anos</strong>, o que significa que serve tanto para os pequenos que estão começando a conhecer as histórias quanto para os maiores que já estão aprendendo a ler.</p>
-
-      <p>E o melhor: enquanto seu filho aprende sobre Deus, ele também desenvolve a leitura, a coordenação motora, a concentração e valores cristãos que levará para a vida toda.</p>
-
-      <div class="quote">
-        <p>"Meu filho de 5 anos amou! Agora ele mesmo pede para fazer as atividades todos os dias. Nunca imaginei que ele fosse se interessar tanto pelas histórias da Bíblia."</p>
-        <span class="author">— Ana Carvalho, mãe do Pedro (5 anos)</span>
-      </div>
-
-      <h2>Quanto custa e como ter acesso?</h2>
-
-      <p>O Kit Bíblico Infantil completo — com todas as 400+ atividades, bônus exclusivos e acesso vitalício — está disponível por um valor promocional especial de lançamento.</p>
-
-      <p>Por menos do que você gastaria em um lanche fora, você terá um material que poderá usar durante meses e até anos com seu filho, criando momentos de aprendizado e conexão em família.</p>
-
-      <div class="cta-inline">
-        <p>Mais de 1.200 famílias já estão usando o material. Clique abaixo para conhecer.</p>
-        <a href="index.html">QUERO CONHECER O KIT</a>
-      </div>
-
-      <p>O pagamento é único — nada de assinaturas mensais. Você paga uma vez e tem acesso vitalício ao material, incluindo todas as futuras atualizações.</p>
-
-      <p>E se por qualquer motivo você não ficar satisfeito, a compra é totalmente protegida: são <strong>7 dias de garantia incondicional</strong>. Se o material não atender às suas expectativas, devolvemos 100% do seu dinheiro, sem burocracia.</p>
 
       <!-- ===== CTA FINAL ===== -->
       <div class="cta-final">
@@ -576,22 +553,22 @@
 
       <!-- ===== COMENTÁRIOS ===== -->
       <section class="comments">
-        <h3 class="comments-title">Comentários <span>(18)</span></h3>
+        <h3 class="comments-title">Comentários <span>(12)</span></h3>
 
         <div class="comment">
-          <div class="comment-avatar comment-avatar--blue">P</div>
+          <div class="comment-avatar comment-avatar--blue">A</div>
           <div class="comment-body">
-            <div class="comment-author">Patrícia Lima <span class="comment-date">há 2 dias</span></div>
-            <div class="comment-text">Material excelente! Comprei para minha filha de 4 anos e ela simplesmente amou. Todos os dias pede para fazer "a lição da Bíblia". Super recomendo!</div>
+            <div class="comment-author">Ana Carolina <span class="comment-date">há 3 horas</span></div>
+            <div class="comment-text">Me identifiquei tanto com esse relato. Comigo foi parecido, meu filho sabia tudo sobre os personagens dos desenhos mas pouco sobre a Bíblia. Isso me motivou a buscar mudanças.</div>
             <span class="comment-reply">Responder</span>
           </div>
         </div>
 
         <div class="comment">
-          <div class="comment-avatar comment-avatar--green">R</div>
+          <div class="comment-avatar comment-avatar--green">P</div>
           <div class="comment-body">
-            <div class="comment-author">Ricardo Mendes <span class="comment-date">há 5 dias</span></div>
-            <div class="comment-text">Estava procurando algo assim há tempos. Meu filho tem 7 anos e está aprendendo a ler com as atividades. Vale muito a pena.</div>
+            <div class="comment-author">Paulo Sérgio <span class="comment-date">há 5 horas</span></div>
+            <div class="comment-text">Lucas, obrigado por compartilhar. Estou passando exatamente por isso e seu texto me fez refletir. Vou começar hoje mesmo a mudar essa realidade aqui em casa.</div>
             <span class="comment-reply">Responder</span>
           </div>
         </div>
@@ -599,8 +576,8 @@
         <div class="comment">
           <div class="comment-avatar comment-avatar--purple">C</div>
           <div class="comment-body">
-            <div class="comment-author">Camila Rocha <span class="comment-date">há 1 semana</span></div>
-            <div class="comment-text">Uso na Escola Dominical e as crianças ficam super empolgadas. Os jogos e desafios prendem a atenção de todos, até dos mais agitados.</div>
+            <div class="comment-author">Cristiana Moraes <span class="comment-date">há 1 dia</span></div>
+            <div class="comment-text">Que texto maravilhoso! Isso é tão verdade. Nós terceirizamos o ensino bíblico para a igreja sem perceber. O lar é o primeiro lugar onde a fé deve ser cultivada.</div>
             <span class="comment-reply">Responder</span>
           </div>
         </div>
@@ -608,8 +585,8 @@
         <div class="comment">
           <div class="comment-avatar">F</div>
           <div class="comment-body">
-            <div class="comment-author">Felipe Andrade <span class="comment-date">há 1 semana</span></div>
-            <div class="comment-text">Comprei e não me arrependo. Minha esposa e eu estamos usando com nossos dois filhos e eles amam. Melhor investimento que fizemos esse ano.</div>
+            <div class="comment-author">Felipe Andrade <span class="comment-date">há 2 dias</span></div>
+            <div class="comment-text">Muito bom! Ansioso pela parte 2. Também passei por uma situação parecida e hoje buscamos materiais que ajudem no dia a dia.</div>
             <span class="comment-reply">Responder</span>
           </div>
         </div>
@@ -631,7 +608,6 @@
       <a href="#">Anuncie</a>
     </div>
     <p>&copy; 2026 FamíliaCristã. Todos os direitos reservados.</p>
-    <p>Este é um conteúdo informativo. O Kit Bíblico Infantil é a ferramenta recomendada pela nossa equipe.</p>
   </div>
 </footer>
 

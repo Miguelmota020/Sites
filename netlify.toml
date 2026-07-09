@@ -2,3 +2,4 @@
   from = "/"
   to = "/advertorial.html"
   status = 200
+  force = true
